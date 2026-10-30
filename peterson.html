@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3 класс · Петерсон — Матемастерская Аньки</title>
+<style>
+:root{--ink:#292d38;--muted:#697184;--line:#e5e8f0;--blue:#eef2ff;--pink:#fff0f4;--green:#edf7f0;--gold:#fff5e6;--purple:#6652b7;--ok:#228454;--bad:#b94a57}*{box-sizing:border-box}body{margin:0;background:#fafafd;color:var(--ink);font:17px/1.55 Arial,sans-serif}.wrap{max-width:820px;margin:auto;padding:24px 20px 55px}.hero{background:#eef2ff;border-radius:12px;padding:13px 18px;margin-bottom:18px;color:#59657e;font-size:22px}.progressbox{background:white;border:1px solid var(--line);border-radius:13px;padding:14px 17px;margin-bottom:20px}.progress-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.progressline{height:8px;background:#eeeef4;border-radius:8px;overflow:hidden;margin:9px 0}.progressline i{display:block;height:100%;width:0;background:#8472d4;transition:width .25s}.stats{color:var(--muted);font-size:14px}.reset{border:0;border-radius:9px;background:#f1effb;color:#5844a5;padding:9px 13px;font:600 14px Arial;cursor:pointer}.task{background:white;border:1px solid var(--line);border-radius:16px;padding:24px;margin:12px 0}.task-meta{color:var(--muted);font-size:14px;margin-bottom:12px}.prompt{font-size:21px;font-weight:600;min-height:56px}.answer{display:flex;gap:10px;margin-top:18px;align-items:center}.answer input{font:inherit;padding:11px 13px;border:1px solid #d9dbe3;border-radius:10px;min-width:0;flex:1;max-width:460px}.answer button,.next,.hintbtn,.tile-action{border:0;border-radius:10px;padding:11px 16px;font:600 15px Arial;cursor:pointer;background:#eeeafb;color:#5844a5}.answer button:hover,.next:hover,.hintbtn:hover,.tile-action:hover{filter:brightness(.97)}.result{margin-top:12px;font-weight:700;min-height:24px}.result.ok{color:var(--ok)}.result.bad{color:var(--bad)}.hint{margin-top:10px;padding:10px 12px;background:var(--gold);border-radius:9px;color:#624e35}.task-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.hintbtn{background:#f4f4f7;color:#61636c;font-size:14px;padding:9px 13px}.next{display:none;background:#6652b7;color:white;margin-left:auto}.next.show{display:inline-block}.builder{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.builder-label{color:var(--muted);font-size:14px;margin-bottom:10px}.dropzone{min-height:50px;border:2px dashed #d9d5ee;border-radius:11px;background:#fcfbff;padding:10px;display:flex;gap:7px;align-items:center;flex-wrap:wrap;color:#8b8b99}.dropzone.filled{color:var(--ink)}.tilebank{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.tile{min-width:38px;padding:7px 10px;border:1px solid #e1deef;border-radius:9px;background:#f4f1ff;color:#5749a0;font-weight:700;text-align:center;cursor:grab;user-select:none;touch-action:manipulation}.tile:active{cursor:grabbing}.tile-action{padding:7px 11px;font-size:13px}.footer{margin-top:20px;color:var(--muted);font-size:14px}@media(max-width:560px){.wrap{padding:12px}.hero{font-size:20px}.task{padding:17px}.prompt{font-size:19px}.answer{align-items:stretch}.answer input{max-width:none}.tile{min-width:42px}}
+.site-nav{margin-bottom:18px}.site-nav a{color:var(--purple);text-decoration:none;font-size:15px}.site-nav a:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid #8472d4;outline-offset:4px}
+</style></head><body><main class="wrap">
+<nav class="site-nav" aria-label="Навигация"><a href="./">← Матемастерская Аньки</a></nav>
+<header class="hero">3 класс · Петерсон</header>
+<div class="progressbox"><div class="progress-head"><strong id="stepLabel">Задание 1</strong><button class="reset" id="reset">Сбросить прогресс</button></div><div class="progressline"><i id="bar"></i></div><div class="stats" id="stats">Верно: 0 · Баллы: 0</div></div>
+<div id="content"></div><footer class="footer">Решай в своём темпе · верный ответ открывает следующее задание</footer>
+</main><script>
+const sections=[
+{title:'Умножение и деление на 10, 100, 1000',icon:'×',tint:'var(--blue)',accent:'#6652b7',tasks:[['Вычисли: 46 · 10','460'],['Вычисли: 230 · 100','23000'],['Вычисли: 8 · 1000','8000'],['Вычисли: 705 · 10','7050'],['Вычисли: 60 · 1000','60000'],['Вычисли: 940 : 10','94'],['Вычисли: 7200 : 100','72'],['Вычисли: 48 000 : 100','480'],['Вычисли: 305 000 : 1000','305'],['Вычисли: 90 000 : 10','9000']]},
+{title:'Вставь пропущенное число',icon:'□',tint:'var(--green)',accent:'#27845d',tasks:[['37 · □ = 3700','100'],['□ · 1000 = 54 000','54'],['6800 : □ = 68','100'],['□ : 100 = 420','42000'],['90 · □ = 90 000','1000'],['7000 : □ = 700','10']]},
+{title:'Найди и исправь ошибки',icon:'⌕',tint:'var(--gold)',accent:'#b87928',tasks:[['Исправь равенство: 540 · 100 = 5400','54000'],['Исправь равенство: 48 000 : 100 = 48','480'],['Исправь равенство: 700 · 10 = 700','7000'],['Исправь равенство: 90 000 : 1000 = 900','90']]},
+{title:'Сложи удобным способом',icon:'+',tint:'var(--pink)',accent:'#b55375',tasks:[['38 + 27 + 62 = ?','127'],['46 + 15 + 54 + 85 = ?','200'],['125 + 48 + 75 + 52 = ?','300'],['199 + 36 + 1 + 64 = ?','300'],['240 + 135 + 60 + 65 = ?','500'],['87 + 149 + 13 + 51 = ?','300']]},
+{title:'Умножь удобным способом',icon:'×',tint:'var(--green)',accent:'#27845d',tasks:[['2 · 9 · 5 = ?','90'],['5 · 16 · 2 = ?','160'],['4 · 7 · 25 = ?','700'],['25 · 9 · 4 = ?','900'],['50 · 13 · 2 = ?','1300'],['2 · 34 · 5 = ?','340'],['5 · 6 · 2 · 3 = ?','180'],['4 · 11 · 5 · 5 = ?','1100'],['25 · 3 · 4 · 2 = ?','600'],['2 · 15 · 5 · 6 = ?','900']]},
+{title:'Что обозначает буква?',icon:'a',tint:'var(--blue)',accent:'#6652b7',tasks:[['В коробке a карандашей. Как записать: на 6 карандашей больше?','a+6'],['В коробке a карандашей. Как записать: на 6 карандашей меньше?','a-6'],['В коробке a карандашей. Как записать: в 6 таких коробках?','a*6'],['В коробке a карандашей. Как записать: разделили поровну на 6?','a/6'],['У Вани m наклеек, у Пети n. У Вани больше. Как записать, сколько у них вместе?','m+n'],['Как записать, на сколько у Вани больше наклеек?','m-n'],['Как записать в 2 раза больше m наклеек?','m*2'],['В банке b кг мёда. Сколько кг в 4 таких банках?','b*4'],['В 4 банках по b кг мёда, 2 кг съели. Сколько осталось?','b*4-2']]},
+{title:'Составь выражение',icon:'✎',tint:'var(--gold)',accent:'#b87928',tasks:[['В пачке a листов. Сколько листов в 5 пачках?','a*5'],['Было b карандашей, взяли 8. Сколько осталось?','b-8'],['У Маши c бусин, у Оли на 7 больше. Сколько у Оли?','c+7'],['У Коли d машинок, у Вани в 3 раза больше. Сколько у Вани?','d*3'],['m конфет поровну разложили в 4 пакета. Сколько в каждом?','m/4'],['В одной коробке x кубиков, в другой y. Сколько всего?','x+y'],['3 тетради по a рублей и ручка за 12 рублей. Сколько стоит покупка?','a*3+12'],['В 4 банках по b кг варенья, съели c кг. Сколько осталось?','b*4-c'],['Было n яблок. 3 отложили, остальные поделили поровну между двумя детьми. Сколько получил каждый?','(n-3)/2'],['В одной коробке a деталей, во второй в 2 раза больше. Сколько всего?','a+a*2']]},
+{title:'Подставь число и вычисли',icon:'=',tint:'var(--pink)',accent:'#b55375',tasks:[['a + 28, если a = 47','75'],['90 - b, если b = 36','54'],['c · 4, если c = 23','92'],['d : 6, если d = 84','14'],['5 · m · 2, если m = 17','170'],['4 · n · 25, если n = 8','800'],['a · 3 + b, если a = 12, b = 19','55'],['(x - y) : 4, если x = 68, y = 20','12']]},
+{title:'Выбери подходящее выражение',icon:'✓',tint:'var(--green)',accent:'#27845d',tasks:[['Красных кубиков a, синих в 4 раза больше. Сколько синих? Введи номер: 1) a+4; 2) a·4; 3) a:4','2'],['Было b яблок, осталось 9. Сколько съели? 1) b+9; 2) 9-b; 3) b-9','3'],['3 альбома по c рублей и краски за 40 рублей. Сколько заплатили? 1) c·3+40; 2) (c+40)·3; 3) c+3+40','1'],['m+n карандашей раздали поровну 5 детям. Сколько получил каждый? Введи номер: 1) m+n:5; 2) (m+n):5; 3) (m-n):5','2']]},
+{title:'Задачи на приведение к единице',icon:'▣',tint:'var(--blue)',accent:'#6652b7',tasks:[['В 4 коробках 48 карандашей. Сколько карандашей в 7 таких коробках?','84'],['3 тетради стоят 54 рубля. Сколько стоят 8 таких тетрадей?','144'],['Из 5 м ткани сшили 10 сумок. Сколько сумок можно сшить из 8 м?','16'],['Для 6 кормушек нужно 42 дощечки. Сколько кормушек можно сделать из 63 дощечек?','9'],['В 4 банках 12 кг мёда. Сколько таких банок нужно для 27 кг?','9'],['В 3 корзинах 24 кг яблок. Сколько кг поместится в 5 таких корзинах?','40']]},
+{title:'Буква в задаче',icon:'☆',tint:'var(--pink)',accent:'#b55375',tasks:[['В 3 коробках 36 карандашей. Составь выражение для количества карандашей в a коробках. Запиши: число перед a, затем знак * и a.','12*a'],['При a = 5, сколько карандашей в коробках?','60'],['При a = 8, сколько карандашей в коробках?','96'],['За 4 блокнота заплатили b рублей. Составь выражение для цены 7 блокнотов. Запиши: число перед b, затем * и b.','7*b'],['Если b = 80, сколько стоят 7 блокнотов?','140'],['В 5 банках 15 л сока. Сколько банок нужно для c литров? Запиши выражение, используя c.','c/3'],['При c = 24, сколько потребуется банок?','8'],['При c = 36, сколько потребуется банок?','12'],['Было m деталей. Для 4 построек взяли по 9 деталей. Составь выражение для остатка.','m-36'],['Если m = 60, сколько деталей осталось?','24']]},
+{title:'Умножение в столбик',icon:'×',tint:'var(--gold)',accent:'#b87928',tasks:[['Вычисли: 24 · 7','168'],['Вычисли: 38 · 6','228'],['Вычисли: 57 · 4','228'],['Вычисли: 86 · 3','258'],['Вычисли: 126 · 5','630'],['Вычисли: 208 · 4','832']]}
+];
+
+const root=document.getElementById('content');
+const storeKey='vanya-peterson-math-progress-v3';
+let saved={};try{saved=JSON.parse(localStorage.getItem(storeKey)||'{}')}catch(e){saved={}}
+let activeSection=null, chosen=null;
+const progress=saved.progress||{};
+function persist(){localStorage.setItem(storeKey,JSON.stringify({progress}))}
+function state(i){return progress[i]||(progress[i]={current:0,points:0,correct:[]})}
+function safe(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
+function home(){
+ activeSection=null;
+ document.getElementById('stepLabel').textContent='Выбери тему';
+ const done=sections.reduce((n,s,i)=>n+state(i).correct.length,0), all=sections.reduce((n,s)=>n+s.tasks.length,0);
+ document.getElementById('stats').textContent='Темы: '+sections.filter((s,i)=>state(i).current>=s.tasks.length).length+' из '+sections.length+' завершено · Верно: '+done;
+ document.getElementById('bar').style.width=(all?Math.round(done/all*100):0)+'%';
+ root.innerHTML='<div class="category-grid">'+sections.map((s,i)=>'<button class="category" data-section="'+i+'" style="--tint:'+s.tint+';--accent:'+s.accent+'"><span class="category-icon">'+safe(s.icon)+'</span><span><strong>'+safe(s.title)+'</strong><small>'+state(i).current+' / '+s.tasks.length+' заданий · '+state(i).points+' верно</small></span><span class="category-arrow">›</span></button>').join('')+'</div>';
+ root.querySelectorAll('.category').forEach(b=>b.onclick=()=>{activeSection=Number(b.dataset.section);renderTask()});
+}
+function answerOptions(sec,task){
+ const correct=String(task[1]);
+ if(/^\d+$/.test(correct)){
+   const n=Number(correct);
+   if(/Введи номер:/.test(task[0])) return ['1','2','3'];
+   const pool=[n+10,Math.max(0,n-10),n+100,n-1,n+1,n*10].map(String).filter(x=>x!==correct);
+   return [correct,...[...new Set(pool)].slice(0,3)].sort(()=>Math.random()-.5);
+ }
+ const pool=sec.tasks.map(x=>String(x[1])).filter(x=>x!==correct);
+ const variants=[];
+ for(const a of pool){if(!variants.includes(a))variants.push(a);if(variants.length===3)break}
+ for(const a of [correct.replace('*','+'),correct.replace('+','-'),correct.replace('/','*'),correct.replace('-','+')]) if(a!==correct&&!variants.includes(a)&&variants.length<3)variants.push(a);
+ while(variants.length<3)variants.push(correct+'+1');
+ return [correct,...variants].sort(()=>Math.random()-.5);
+}
+function renderTask(){
+ const sec=sections[activeSection], st=state(activeSection);
+ if(st.current>=sec.tasks.length){home();document.getElementById('stepLabel').textContent='Тема пройдена!';root.insertAdjacentHTML('afterbegin','<article class="task done">🎉 Все задания темы выполнены! <button class="tile-action" id="backCats">К темам</button></article>');document.getElementById('backCats').onclick=home;return}
+ const task=sec.tasks[st.current], options=answerOptions(sec,task);
+ document.getElementById('stepLabel').textContent=sec.title+' · '+(st.current+1)+' из '+sec.tasks.length;
+ document.getElementById('stats').textContent='В этой теме верно: '+st.points+' · Прогресс сохраняется автоматически';
+ document.getElementById('bar').style.width=Math.round(st.current/sec.tasks.length*100)+'%';
+ chosen=null;
+ root.innerHTML='<div class="topic-head"><button class="back" id="back">← Все темы</button><span>'+safe(sec.title)+'</span></div><article class="task" style="--accent:'+sec.accent+'"><div class="task-meta">Задание '+(st.current+1)+' из '+sec.tasks.length+'</div><div class="prompt">'+safe(task[0])+'</div><div class="choice-label">Выбери ответ или перетащи карточку в поле:</div><div class="choices">'+options.map((x,i)=>'<button class="choice" draggable="true" data-value="'+safe(x)+'"><span class="choice-mark">'+String.fromCharCode(1040+i)+'</span>'+safe(x)+'</button>').join('')+'</div><div class="dropzone" id="answerZone">Перетащи выбранный ответ сюда</div><div class="task-actions"><button class="answer-check" id="check">Проверить</button><button class="next" id="next">Следующее задание →</button></div><div class="result" id="result" aria-live="polite"></div></article>';
+ document.getElementById('back').onclick=home;
+ const zone=document.getElementById('answerZone');
+ root.querySelectorAll('.choice').forEach(btn=>{
+  btn.onclick=()=>select(btn.dataset.value,btn);
+  btn.ondragstart=e=>e.dataTransfer.setData('text/plain',btn.dataset.value);
+ });
+ zone.ondragover=e=>e.preventDefault();
+ zone.ondrop=e=>{e.preventDefault();select(e.dataTransfer.getData('text/plain'),null)};
+ function select(value,btn){
+  chosen=value;zone.textContent=value;zone.classList.add('filled');
+  root.querySelectorAll('.choice').forEach(x=>x.classList.toggle('selected',x===btn||x.dataset.value===value));
+ }
+ document.getElementById('check').onclick=()=>{
+  const result=document.getElementById('result');
+  if(chosen===String(task[1])){
+   if(!st.correct.includes(st.current)){st.correct.push(st.current);st.points++}
+   result.textContent='Верно! Отлично ✨';result.className='result ok';
+   document.getElementById('check').disabled=true;document.getElementById('next').classList.add('show');
+   persist();document.getElementById('stats').textContent='Верно! В этой теме: '+st.points;
+  }else if(chosen===null){result.textContent='Сначала выбери карточку с ответом.';result.className='result bad'}
+  else{result.textContent='Попробуй ещё раз — подумай над условием.';result.className='result bad'}
+ };
+ document.getElementById('next').onclick=()=>{st.current++;persist();renderTask()};
+}
+document.getElementById('reset').onclick=()=>{if(confirm('Сбросить прогресс во всех темах?')){for(const k of Object.keys(progress))delete progress[k];persist();home()}};
+const extra=document.createElement('style');
+extra.textContent='.category-grid{display:grid;gap:12px}.category{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink);cursor:pointer;font:inherit}.category:hover,.choice:hover{transform:translateY(-1px);box-shadow:0 4px 14px #2221}.category-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:11px;background:var(--tint);color:var(--accent);font-weight:700;font-size:22px}.category small{display:block;color:var(--muted);font-size:13px;margin-top:3px}.category-arrow{margin-left:auto;color:var(--muted);font-size:25px}.topic-head{display:flex;align-items:center;gap:12px;color:var(--muted);margin:0 0 12px}.back{border:0;background:#f1effb;color:#5844a5;padding:9px 12px;border-radius:9px;cursor:pointer;font:600 14px Arial}.choice-label{margin-top:18px;color:var(--muted);font-size:15px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.choice{display:flex;align-items:center;gap:10px;min-height:54px;padding:10px 13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:600 17px Arial;cursor:grab;transition:.15s}.choice.selected{border:2px solid #8472d4;background:#f6f3ff}.choice-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#f1effb;color:#6652b7;font-size:13px}.dropzone{min-height:54px;margin-top:16px;border:2px dashed #d9d5ee;border-radius:12px;background:#fcfbff;padding:14px;color:#858394}.dropzone.filled{background:#f6f3ff;color:var(--ink);border-style:solid}.answer-check{border:0;border-radius:10px;padding:11px 17px;background:#6652b7;color:white;font:600 15px Arial;cursor:pointer}.answer-check:disabled{opacity:.55}.next{display:none;border:0;border-radius:10px;padding:11px 16px;background:#edf7f0;color:#22724a;font:600 15px Arial;cursor:pointer}.next.show{display:inline-block}.done{display:flex;justify-content:space-between;align-items:center}.task-actions{margin-top:14px}.result{min-height:24px;margin-top:12px;font-weight:700}.result.ok{color:var(--ok)}.result.bad{color:var(--bad)}@media(max-width:560px){.choices{grid-template-columns:1fr}.category{padding:13px}.task{padding:17px}}';
+document.head.appendChild(extra);
+home();
+</script></body></html>
