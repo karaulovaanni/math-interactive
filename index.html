@@ -24,25 +24,75 @@ const sections=[
 {title:'Буква в задаче',icon:'☆',tint:'var(--pink)',accent:'#b55375',tasks:[['В 3 коробках 36 карандашей. Составь выражение для количества карандашей в a коробках. Запиши: число перед a, затем знак * и a.','12*a'],['При a = 5, сколько карандашей в коробках?','60'],['При a = 8, сколько карандашей в коробках?','96'],['За 4 блокнота заплатили b рублей. Составь выражение для цены 7 блокнотов. Запиши: число перед b, затем * и b.','7*b'],['Если b = 80, сколько стоят 7 блокнотов?','140'],['В 5 банках 15 л сока. Сколько банок нужно для c литров? Запиши выражение, используя c.','c/3'],['При c = 24, сколько потребуется банок?','8'],['При c = 36, сколько потребуется банок?','12'],['Было m деталей. Для 4 построек взяли по 9 деталей. Составь выражение для остатка.','m-36'],['Если m = 60, сколько деталей осталось?','24']]},
 {title:'Умножение в столбик',icon:'×',tint:'var(--gold)',accent:'#b87928',tasks:[['Вычисли: 24 · 7','168'],['Вычисли: 38 · 6','228'],['Вычисли: 57 · 4','228'],['Вычисли: 86 · 3','258'],['Вычисли: 126 · 5','630'],['Вычисли: 208 · 4','832']]}
 ];
+
 const root=document.getElementById('content');
-const tasks=sections.flatMap(section=>section.tasks.map(([prompt,answer])=>({section:section.title,prompt,answer})));
-const storeKey='vanya-peterson-math-progress-v2';
+const storeKey='vanya-peterson-math-progress-v3';
 let saved={};try{saved=JSON.parse(localStorage.getItem(storeKey)||'{}')}catch(e){saved={}}
-let current=Math.max(0,Math.min(tasks.length,Number(saved.current)||0));
-let points=Math.max(0,Number(saved.points)||0);
-let correctIds=Array.isArray(saved.correctIds)?saved.correctIds:[];
-function norm(s){return s.toLowerCase().replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/\s/g,'').replace(/,/g,'.').replace(/\(([^()]*)\)/g,'$1')}
-function persist(){localStorage.setItem(storeKey,JSON.stringify({current,points,correctIds}))}
-function paintProgress(){document.getElementById('stepLabel').textContent=current<tasks.length?`Задание ${current+1} из ${tasks.length}`:'Все задания пройдены!';document.getElementById('stats').textContent=`Верно: ${correctIds.length} · Баллы: ${points}`;document.getElementById('bar').style.width=Math.round(current/tasks.length*100)+'%'}
-function syncBuilder(){const input=root.querySelector('#answerInput');const dz=root.querySelector('.dropzone');if(!input||!dz)return;dz.textContent=input.value||'Перетащи сюда цифры и знаки';dz.classList.toggle('filled',!!input.value)}
-function appendToken(token){const input=root.querySelector('#answerInput');if(!input||input.disabled)return;input.value+=token;syncBuilder();input.focus()}
-function renderTask(){paintProgress();if(current>=tasks.length){root.innerHTML='<article class="task"><div class="prompt">🎉 Отличная работа! Ты прошёл все задания.</div><p>Можно сбросить прогресс и начать тренировку заново.</p></article>';return}
-const t=tasks[current];root.innerHTML=`<article class="task" style="--accent:#6652b7"><div class="task-meta">${t.section} · задание ${current+1} из ${tasks.length}</div><div class="prompt">${t.prompt.replaceAll('&','&amp;').replaceAll('<','&lt;')}</div><div class="builder"><div class="builder-label">Собери ответ: перетащи знак или цифру в поле либо нажми на них</div><div class="dropzone" aria-label="Поле для сборки ответа">Перетащи сюда цифры и знаки</div><div class="answer"><input id="answerInput" aria-label="Твой ответ" autocomplete="off" inputmode="text"><button id="check" type="button">Проверить</button></div><div class="tilebank" aria-label="Цифры и знаки для ответа"></div><div class="task-actions"><button class="tile-action" id="backspace" type="button">⌫ Удалить знак</button><button class="tile-action" id="clear" type="button">Очистить поле</button><button class="hintbtn" id="hintButton" type="button">Показать ответ</button><button class="next" id="next" type="button">Следующее задание →</button></div><div class="result" id="result" aria-live="polite"></div><div class="hint" id="hint" hidden>Ответ: <strong>${t.answer}</strong></div></div></article>`;
-const bank=root.querySelector('.tilebank');'0123456789+-*/():abc dmnxy'.replace(/ /g,'').split('').forEach(token=>{const el=document.createElement('button');el.type='button';el.className='tile';el.textContent=token==='*'?'×':token==='/'?':':token;el.draggable=true;el.setAttribute('aria-label',`Добавить ${token}`);el.addEventListener('click',()=>appendToken(token));el.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',token));bank.appendChild(el)});
-const dz=root.querySelector('.dropzone');dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('filled')});dz.addEventListener('drop',e=>{e.preventDefault();const token=e.dataTransfer.getData('text/plain');if(token)appendToken(token)});
-const input=root.querySelector('#answerInput');input.addEventListener('input',syncBuilder);input.addEventListener('keydown',e=>{if(e.key==='Enter')checkAnswer()});root.querySelector('#check').onclick=checkAnswer;root.querySelector('#backspace').onclick=()=>{input.value=input.value.slice(0,-1);syncBuilder();input.focus()};root.querySelector('#clear').onclick=()=>{input.value='';syncBuilder();input.focus()};root.querySelector('#hintButton').onclick=()=>{root.querySelector('#hint').hidden=false};root.querySelector('#next').onclick=()=>{current++;persist();renderTask()};
-function checkAnswer(){const result=root.querySelector('#result');if(norm(input.value)===norm(t.answer)){if(!correctIds.includes(current)){correctIds.push(current);points++}result.textContent='Верно! Молодец ✨';result.className='result ok';input.disabled=true;root.querySelector('#check').disabled=true;root.querySelector('#next').classList.add('show');persist();paintProgress()}else{result.textContent='Пока не совпало. Попробуй ещё раз: можно перетаскивать знаки или нажимать на них.';result.className='result bad'}}
+let activeSection=null, chosen=null;
+const progress=saved.progress||{};
+function persist(){localStorage.setItem(storeKey,JSON.stringify({progress}))}
+function state(i){return progress[i]||(progress[i]={current:0,points:0,correct:[]})}
+function safe(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
+function home(){
+ activeSection=null;
+ document.getElementById('stepLabel').textContent='Выбери тему';
+ const done=sections.reduce((n,s,i)=>n+state(i).correct.length,0), all=sections.reduce((n,s)=>n+s.tasks.length,0);
+ document.getElementById('stats').textContent='Темы: '+sections.filter((s,i)=>state(i).current>=s.tasks.length).length+' из '+sections.length+' завершено · Верно: '+done;
+ document.getElementById('bar').style.width=(all?Math.round(done/all*100):0)+'%';
+ root.innerHTML='<div class="category-grid">'+sections.map((s,i)=>'<button class="category" data-section="'+i+'" style="--tint:'+s.tint+';--accent:'+s.accent+'"><span class="category-icon">'+safe(s.icon)+'</span><span><strong>'+safe(s.title)+'</strong><small>'+state(i).current+' / '+s.tasks.length+' заданий · '+state(i).points+' верно</small></span><span class="category-arrow">›</span></button>').join('')+'</div>';
+ root.querySelectorAll('.category').forEach(b=>b.onclick=()=>{activeSection=Number(b.dataset.section);renderTask()});
 }
-document.getElementById('reset').onclick=()=>{current=0;points=0;correctIds=[];persist();renderTask()};
-renderTask();
+function answerOptions(sec,task){
+ const correct=String(task[1]);
+ if(/^\d+$/.test(correct)){
+   const n=Number(correct);
+   if(/Введи номер:/.test(task[0])) return ['1','2','3'];
+   const pool=[n+10,Math.max(0,n-10),n+100,n-1,n+1,n*10].map(String).filter(x=>x!==correct);
+   return [correct,...[...new Set(pool)].slice(0,3)].sort(()=>Math.random()-.5);
+ }
+ const pool=sec.tasks.map(x=>String(x[1])).filter(x=>x!==correct);
+ const variants=[];
+ for(const a of pool){if(!variants.includes(a))variants.push(a);if(variants.length===3)break}
+ for(const a of [correct.replace('*','+'),correct.replace('+','-'),correct.replace('/','*'),correct.replace('-','+')]) if(a!==correct&&!variants.includes(a)&&variants.length<3)variants.push(a);
+ while(variants.length<3)variants.push(correct+'+1');
+ return [correct,...variants].sort(()=>Math.random()-.5);
+}
+function renderTask(){
+ const sec=sections[activeSection], st=state(activeSection);
+ if(st.current>=sec.tasks.length){home();document.getElementById('stepLabel').textContent='Тема пройдена!';root.insertAdjacentHTML('afterbegin','<article class="task done">🎉 Все задания темы выполнены! <button class="tile-action" id="backCats">К темам</button></article>');document.getElementById('backCats').onclick=home;return}
+ const task=sec.tasks[st.current], options=answerOptions(sec,task);
+ document.getElementById('stepLabel').textContent=sec.title+' · '+(st.current+1)+' из '+sec.tasks.length;
+ document.getElementById('stats').textContent='В этой теме верно: '+st.points+' · Прогресс сохраняется автоматически';
+ document.getElementById('bar').style.width=Math.round(st.current/sec.tasks.length*100)+'%';
+ chosen=null;
+ root.innerHTML='<div class="topic-head"><button class="back" id="back">← Все темы</button><span>'+safe(sec.title)+'</span></div><article class="task" style="--accent:'+sec.accent+'"><div class="task-meta">Задание '+(st.current+1)+' из '+sec.tasks.length+'</div><div class="prompt">'+safe(task[0])+'</div><div class="choice-label">Выбери ответ или перетащи карточку в поле:</div><div class="choices">'+options.map((x,i)=>'<button class="choice" draggable="true" data-value="'+safe(x)+'"><span class="choice-mark">'+String.fromCharCode(1040+i)+'</span>'+safe(x)+'</button>').join('')+'</div><div class="dropzone" id="answerZone">Перетащи выбранный ответ сюда</div><div class="task-actions"><button class="answer-check" id="check">Проверить</button><button class="next" id="next">Следующее задание →</button></div><div class="result" id="result" aria-live="polite"></div></article>';
+ document.getElementById('back').onclick=home;
+ const zone=document.getElementById('answerZone');
+ root.querySelectorAll('.choice').forEach(btn=>{
+  btn.onclick=()=>select(btn.dataset.value,btn);
+  btn.ondragstart=e=>e.dataTransfer.setData('text/plain',btn.dataset.value);
+ });
+ zone.ondragover=e=>e.preventDefault();
+ zone.ondrop=e=>{e.preventDefault();select(e.dataTransfer.getData('text/plain'),null)};
+ function select(value,btn){
+  chosen=value;zone.textContent=value;zone.classList.add('filled');
+  root.querySelectorAll('.choice').forEach(x=>x.classList.toggle('selected',x===btn||x.dataset.value===value));
+ }
+ document.getElementById('check').onclick=()=>{
+  const result=document.getElementById('result');
+  if(chosen===String(task[1])){
+   if(!st.correct.includes(st.current)){st.correct.push(st.current);st.points++}
+   result.textContent='Верно! Отлично ✨';result.className='result ok';
+   document.getElementById('check').disabled=true;document.getElementById('next').classList.add('show');
+   persist();document.getElementById('stats').textContent='Верно! В этой теме: '+st.points;
+  }else if(chosen===null){result.textContent='Сначала выбери карточку с ответом.';result.className='result bad'}
+  else{result.textContent='Попробуй ещё раз — подумай над условием.';result.className='result bad'}
+ };
+ document.getElementById('next').onclick=()=>{st.current++;persist();renderTask()};
+}
+document.getElementById('reset').onclick=()=>{if(confirm('Сбросить прогресс во всех темах?')){for(const k of Object.keys(progress))delete progress[k];persist();home()}};
+const extra=document.createElement('style');
+extra.textContent='.category-grid{display:grid;gap:12px}.category{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink);cursor:pointer;font:inherit}.category:hover,.choice:hover{transform:translateY(-1px);box-shadow:0 4px 14px #2221}.category-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:11px;background:var(--tint);color:var(--accent);font-weight:700;font-size:22px}.category small{display:block;color:var(--muted);font-size:13px;margin-top:3px}.category-arrow{margin-left:auto;color:var(--muted);font-size:25px}.topic-head{display:flex;align-items:center;gap:12px;color:var(--muted);margin:0 0 12px}.back{border:0;background:#f1effb;color:#5844a5;padding:9px 12px;border-radius:9px;cursor:pointer;font:600 14px Arial}.choice-label{margin-top:18px;color:var(--muted);font-size:15px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.choice{display:flex;align-items:center;gap:10px;min-height:54px;padding:10px 13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:600 17px Arial;cursor:grab;transition:.15s}.choice.selected{border:2px solid #8472d4;background:#f6f3ff}.choice-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#f1effb;color:#6652b7;font-size:13px}.dropzone{min-height:54px;margin-top:16px;border:2px dashed #d9d5ee;border-radius:12px;background:#fcfbff;padding:14px;color:#858394}.dropzone.filled{background:#f6f3ff;color:var(--ink);border-style:solid}.answer-check{border:0;border-radius:10px;padding:11px 17px;background:#6652b7;color:white;font:600 15px Arial;cursor:pointer}.answer-check:disabled{opacity:.55}.next{display:none;border:0;border-radius:10px;padding:11px 16px;background:#edf7f0;color:#22724a;font:600 15px Arial;cursor:pointer}.next.show{display:inline-block}.done{display:flex;justify-content:space-between;align-items:center}.task-actions{margin-top:14px}.result{min-height:24px;margin-top:12px;font-weight:700}.result.ok{color:var(--ok)}.result.bad{color:var(--bad)}@media(max-width:560px){.choices{grid-template-columns:1fr}.category{padding:13px}.task{padding:17px}}';
+document.head.appendChild(extra);
+home();
 </script></body></html>
