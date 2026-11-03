@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математика 5 класс — делители, кратные и признаки делимости</title>
+<style>
+:root{--ink:#20304a;--muted:#63718a;--blue:#4263eb;--teal:#0f9b8e;--yellow:#ffd166;--paper:#f6f8fc;--line:#dfe6f2;--pink:#ff8fa3;--green:#d9f7e8}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(125deg,#243b72,#4263eb 65%,#54b8c8);color:white;padding:34px 20px 28px}
+.wrap{max-width:1050px;margin:auto;padding:0 18px}
+.kicker{font-size:.8rem;text-transform:uppercase;letter-spacing:.13em;opacity:.85;font-weight:700}
+h1{font-size:clamp(1.9rem,5vw,3.1rem);line-height:1.12;margin:10px 0}
+header p{max-width:700px;font-size:1.08rem;margin:12px 0 0}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 0}
+nav a{color:white;text-decoration:none;border:1px solid #ffffff66;border-radius:30px;padding:7px 12px;font-size:.9rem}
+main{max-width:1050px;margin:22px auto 60px;padding:0 18px}
+section{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;margin:18px 0;box-shadow:0 7px 22px #1d37600a}
+h2{margin:0 0 12px;font-size:1.55rem}h3{margin:12px 0 8px;font-size:1.1rem}
+.lead{color:var(--muted);margin-top:0}
+.pill{display:inline-block;background:#edf1ff;color:#2e4cc2;border-radius:8px;padding:3px 9px;font-weight:700;font-size:.85rem}
+.visual{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;background:#f5f7ff;border-radius:15px;padding:18px;margin:14px 0}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:43px;height:43px;border-radius:12px;background:#e1e8ff;color:#2445bc;font-weight:800;font-size:1.1rem}
+.num.gold{background:#fff0c2;color:#835700}.num.teal{background:#d8f7ef;color:#08776d}.arrow{font-size:1.4rem;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.mini{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff}
+.mini.blue{background:#f3f5ff}.mini.green{background:#effcf5}.mini.yellow{background:#fff9e9}
+.callout{border-left:5px solid var(--yellow);padding:10px 14px;background:#fff9e9;border-radius:0 10px 10px 0;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{padding:10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f3f5ff}
+.rule{font-size:1.05rem;font-weight:700}
+.task{border:1px solid var(--line);border-radius:15px;padding:16px;margin:13px 0}
+.task p{margin:0 0 10px;font-weight:650}
+.options{display:flex;gap:8px;flex-wrap:wrap}
+button,.option{border:1px solid #cbd5e8;background:white;color:var(--ink);padding:9px 13px;border-radius:10px;cursor:pointer;font:inherit}
+button:hover,.option:hover{border-color:var(--blue);background:#f2f5ff}
+.option.selected{background:#e7ecff;border-color:var(--blue);font-weight:700}
+.option.correct{background:#d9f7e8;border-color:#26a269}.option.wrong{background:#ffe2e7;border-color:#e35d75}
+.feedback{margin-top:9px;font-weight:650;min-height:1.3em}.good{color:#087b4d}.bad{color:#bd3852}
+input[type=text]{padding:10px 12px;border:1px solid #bdc9df;border-radius:9px;font:inherit;max-width:100%;width:240px}
+.checkrow{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.primary{background:var(--blue);color:white;border-color:var(--blue);font-weight:700}.primary:hover{background:#304bc5;color:white}
+.meter{height:9px;background:#e7ebf5;border-radius:20px;overflow:hidden;margin:10px 0 4px}.meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .25s}
+.small{font-size:.92rem;color:var(--muted)}.big-equation{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;letter-spacing:.03em}
+footer{text-align:center;color:var(--muted);padding:20px}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:10px 0}summary{cursor:pointer;font-weight:700}
+@media(max-width:600px){section{padding:18px}th,td{padding:8px;font-size:.92rem}.visual{gap:5px}.num{min-width:36px;height:38px}}
+.site-home{display:inline-block;color:white;text-decoration:none;margin-bottom:18px}.site-home:hover{text-decoration:underline}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="site-home" href="./">← Матемастерская Аньки</a>
+<div class="kicker">Интерактивный урок · 5 класс</div>
+<h1>Делители, кратные<br>и признаки делимости</h1>
+<p>Разберись в правилах на наглядных примерах, а потом проверь себя. Можно проходить по порядку или выбрать нужную тему.</p>
+<nav>
+<a href="#divisors">Делители и кратные</a><a href="#signs">Признаки делимости</a><a href="#prime">Простые и составные</a><a href="#category-trainers">Тренажёры по категориям</a><a href="#practice">Общий тест</a>
+</nav>
+</div></header>
+<main>
+<section id="divisors">
+<span class="pill">ТЕМА 1</span><h2>Что такое делители и кратные?</h2>
+<p class="lead">Главный вопрос: можно ли разделить число на другое без остатка?</p>
+<div class="cols">
+<div class="mini blue"><h3>Делитель — «на что делим»</h3><p>Число <b>4</b> — делитель числа 12, потому что <b>12 : 4 = 3</b> без остатка.</p><div class="visual"><span class="num">12</span><span class="arrow">÷</span><span class="num gold">4</span><span class="arrow">=</span><span class="num teal">3</span></div></div>
+<div class="mini green"><h3>Кратное — «что делится»</h3><p>Число <b>12</b> — кратное числа 4, потому что <b>4 · 3 = 12</b>.</p><div class="visual"><span class="num gold">4</span><span class="arrow">× 3 =</span><span class="num teal">12</span></div></div>
+</div>
+<h3>Найдём все делители числа 12</h3>
+<p>Проверяем, на какие числа 12 делится нацело. Удобно искать пары множителей:</p>
+<div class="visual"><span class="num">1</span><span class="arrow">×</span><span class="num">12</span><span class="arrow">=</span><span class="num teal">12</span><span class="num">2</span><span class="arrow">×</span><span class="num">6</span><span class="arrow">=</span><span class="num teal">12</span><span class="num">3</span><span class="arrow">×</span><span class="num">4</span><span class="arrow">=</span><span class="num teal">12</span></div>
+<p><b>Все делители 12:</b> 1, 2, 3, 4, 6, 12.</p>
+<div class="callout">Запомни: у числа конечное количество делителей. Единица и само число всегда являются его делителями.</div>
+<h3>Найдём кратные числа 4</h3>
+<p>Умножаем 4 на 1, 2, 3, 4, 5 и так далее:</p>
+<div class="visual"><span class="num teal">4</span><span class="num teal">8</span><span class="num teal">12</span><span class="num teal">16</span><span class="num teal">20</span><span class="num teal">24</span><span class="arrow">…</span></div>
+<p>Первые пять кратных 4: <b>4, 8, 12, 16, 20.</b> Кратных бесконечно много.</p>
+<table><tr><th>Делители числа 6</th><th>Первые кратные числа 6</th></tr><tr><td>1, 2, 3, 6</td><td>6, 12, 18, 24, 30…</td></tr></table>
+<details><summary>Как не перепутать?</summary><p><b>Делитель</b> делит данное число нацело: 3 — делитель 15, потому что 15 : 3 = 5.</p><p><b>Кратное</b> само делится на данное число: 15 — кратное 3, потому что 15 : 3 = 5.</p></details>
+</section>
+
+<section id="signs">
+<span class="pill">ТЕМА 2</span><h2>Признаки делимости</h2>
+<p class="lead">Это правила, которые помогают понять, делится ли число нацело, не выполняя деление.</p>
+<table>
+<tr><th>На что делим?</th><th>Правило</th><th>Пример</th></tr>
+<tr><td><b>На 2</b></td><td>Последняя цифра — 0, 2, 4, 6 или 8.</td><td>348 делится, 351 — нет.</td></tr>
+<tr><td><b>На 5</b></td><td>Последняя цифра — 0 или 5.</td><td>725 делится, 722 — нет.</td></tr>
+<tr><td><b>На 10</b></td><td>Последняя цифра — 0.</td><td>1 430 делится, 1 435 — нет.</td></tr>
+<tr><td><b>На 3</b></td><td>Сумма цифр делится на 3.</td><td>123: 1 + 2 + 3 = 6; 6 делится на 3, значит, 123 делится.</td></tr>
+<tr><td><b>На 9</b></td><td>Сумма цифр делится на 9.</td><td>729: 7 + 2 + 9 = 18; 18 делится на 9, значит, 729 делится.</td></tr>
+</table>
+<div class="cols">
+<div class="mini yellow"><h3>Смотрим на последнюю цифру</h3><div class="big-equation">2 · 5 · 10</div><p>2 — чётная цифра. 5 — 0 или 5. 10 — только 0.</p></div>
+<div class="mini blue"><h3>Складываем все цифры</h3><div class="big-equation">3 · 9</div><p>Например, 4 572: 4 + 5 + 7 + 2 = 18. Число делится и на 3, и на 9.</p></div>
+</div>
+<div class="callout"><b>Важно!</b> Если число делится на 9, оно обязательно делится и на 3. Но если делится на 3, это ещё не значит, что оно делится на 9. Например, 12 делится на 3, но не на 9.</div>
+</section>
+
+<section id="prime">
+<span class="pill">ТЕМА 3</span><h2>Простые и составные числа</h2>
+<div class="cols">
+<div class="mini green"><h3>Простое число</h3><p>Имеет ровно два делителя: <b>1 и само себя</b>.</p><div class="visual"><span class="num teal">7</span><span class="arrow">→</span><span class="num">1</span><span class="num">7</span></div><p>Примеры: 2, 3, 5, 7, 11, 13, 17.</p></div>
+<div class="mini blue"><h3>Составное число</h3><p>Имеет <b>больше двух делителей</b>.</p><div class="visual"><span class="num">8</span><span class="arrow">→</span><span class="num">1</span><span class="num">2</span><span class="num">4</span><span class="num">8</span></div><p>Примеры: 4, 6, 8, 9, 10, 12.</p></div>
+</div>
+<div class="callout"><b>Особый случай — число 1.</b> У него только один делитель — 1. Поэтому 1 не является ни простым, ни составным числом.</div>
+<p><b>Как проверить?</b> Попробуй найти делители числа. Если кроме 1 и самого числа есть ещё хотя бы один делитель — число составное.</p>
+</section>
+
+
+<section id="category-trainers">
+<span class="pill">ТРЕНАЖЁРЫ ПО КАТЕГОРИЯМ</span>
+<h2>Выбери, что тренировать</h2>
+<p class="lead">В каждом режиме будут новые числа. Отвечай «Да» или «Нет», а затем проверяй себя.</p>
+<div class="cols">
+  <div class="mini blue">
+    <h3>Делимость на выбранное число</h3>
+    <p>Например: делится ли 246 на 2? А 351 на 3? Выбери категорию и отвечай «Да» или «Нет».</p>
+    <label for="divisorCategory"><b>Выбери делитель:</b></label><br>
+    <select id="divisorCategory" style="margin-top:8px;padding:10px;border:1px solid #bdc9df;border-radius:9px;font:inherit;width:100%">
+      <option value="2">На 2</option><option value="3">На 3</option><option value="5">На 5</option><option value="9">На 9</option><option value="10">На 10</option>
+    </select>
+    <button class="primary" id="startDivisibility" style="margin-top:10px">Начать тренировку</button>
+  </div>
+  <div class="mini green">
+    <h3>Простое или составное?</h3>
+    <p>Определи, является ли число простым, составным или особым случаем — числом 1.</p>
+    <button class="primary" id="startPrime" style="margin-top:10px">Начать тренировку</button>
+  </div>
+</div>
+<div class="task" id="categoryTask" style="display:none">
+  <p id="categoryPrompt">Вопрос появится здесь</p>
+  <div class="options" id="categoryOptions"></div>
+  <div class="feedback" id="categoryFeedback"></div>
+  <div class="checkrow">
+    <button class="primary" id="categoryCheck">Проверить</button>
+    <button id="categoryNext">Следующее число</button>
+  </div>
+  <p class="small" id="categoryStats">Правильных ответов: 0</p>
+</div>
+</section>
+
+<section id="practice">
+<span class="pill">ПРОВЕРЬ СЕБЯ</span><h2>Интерактивный тренажёр</h2>
+<p class="lead">Выбирай ответы. После проверки появится объяснение. За каждый правильный ответ начисляется балл.</p>
+<div class="meter"><span id="progress"></span></div><p class="small" id="score">Правильных ответов: 0 из 12</p>
+<div id="quiz"></div>
+<div class="checkrow"><button class="primary" id="checkAll">Проверить ответы</button><button id="reset">Начать заново</button></div>
+<p id="final" class="feedback"></p>
+</section>
+<footer>Математика · 5 класс · Повторяй правила и объясняй, почему ответ верный.</footer>
+</main>
+<script>
+const questions=[
+{q:"1. Какое число является делителем числа 24?",opts:["5","6","7"],a:1,why:"24 : 6 = 4 без остатка, поэтому 6 — делитель 24."},
+{q:"2. Какое число является кратным 7?",opts:["21","16","9"],a:0,why:"21 = 7 · 3, значит, 21 — кратное 7."},
+{q:"3. Выбери все делители числа 10.",opts:["1, 2, 5, 10","1, 3, 5, 10","2, 4, 5, 10"],a:0,why:"10 делится нацело на 1, 2, 5 и 10."},
+{q:"4. На какую цифру должно оканчиваться число, чтобы делиться на 10?",opts:["На 5","На 0","На любую чётную"],a:1,why:"На 10 делятся числа, последняя цифра которых — 0."},
+{q:"5. Какое число делится на 2?",opts:["437","1 246","1 235"],a:1,why:"Последняя цифра числа 1 246 — 6, она чётная."},
+{q:"6. Какое число делится на 5?",opts:["632","741","905"],a:2,why:"Число 905 оканчивается на 5."},
+{q:"7. Делится ли 123 на 3?",opts:["Да, сумма цифр 6","Нет, последняя цифра 3","Нет, сумма цифр 5"],a:0,why:"1 + 2 + 3 = 6, а 6 делится на 3."},
+{q:"8. Делится ли 729 на 9?",opts:["Нет, последняя цифра 9","Да, сумма цифр 18","Нет, сумма цифр 18"],a:1,why:"7 + 2 + 9 = 18; 18 делится на 9."},
+{q:"9. Какое число делится на 3, но не делится на 9?",opts:["18","27","12"],a:2,why:"1 + 2 = 3: число 12 делится на 3, но сумма цифр не делится на 9."},
+{q:"10. Какое число простое?",opts:["15","17","21"],a:1,why:"У 17 ровно два делителя: 1 и 17."},
+{q:"11. Какое число составное?",opts:["13","19","25"],a:2,why:"У 25 есть делители 1, 5 и 25 — больше двух."},
+{q:"12. Число 1 — это…",opts:["Простое","Составное","Ни простое, ни составное"],a:2,why:"У числа 1 только один делитель, поэтому оно не простое и не составное."}
+];
+const quiz=document.getElementById('quiz');
+questions.forEach((item,i)=>{
+ const div=document.createElement('div');div.className='task';div.dataset.index=i;
+ const p=document.createElement('p');p.textContent=item.q;div.appendChild(p);
+ const opts=document.createElement('div');opts.className='options';
+ item.opts.forEach((o,j)=>{const b=document.createElement('button');b.className='option';b.textContent=o;b.type='button';b.dataset.choice=j;b.addEventListener('click',()=>{opts.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');div.dataset.answer=j;div.querySelector('.feedback').textContent='';});opts.appendChild(b);});
+ div.appendChild(opts);const f=document.createElement('div');f.className='feedback';div.appendChild(f);quiz.appendChild(div);
+});
+document.getElementById('checkAll').addEventListener('click',()=>{
+ let score=0,answered=0;
+ document.querySelectorAll('#quiz .task').forEach((div,i)=>{
+  const chosen=div.dataset.answer;const item=questions[i];const f=div.querySelector('.feedback');
+  div.querySelectorAll('.option').forEach((b,j)=>{b.classList.remove('correct','wrong');if(j===item.a)b.classList.add('correct');if(chosen!==undefined&&Number(chosen)===j&&Number(chosen)!==item.a)b.classList.add('wrong');});
+  if(chosen!==undefined){answered++;if(Number(chosen)===item.a){score++;f.textContent='Верно! '+item.why;f.className='feedback good';}else{f.textContent='Пока неверно. '+item.why;f.className='feedback bad';}}
+  else{f.textContent='Выбери ответ. '+item.why;f.className='feedback bad';}
+ });
+ document.getElementById('score').textContent=`Правильных ответов: ${score} из ${questions.length} · Отвечено: ${answered} из ${questions.length}`;
+ document.getElementById('progress').style.width=(score/questions.length*100)+'%';
+ document.getElementById('final').textContent=score===12?'Отлично! Ты уверенно знаешь тему.':score>=9?'Хороший результат! Повтори правила, где были ошибки.':'Повтори объяснения выше и попробуй ещё раз.';
+});
+document.getElementById('reset').addEventListener('click',()=>{
+ document.querySelectorAll('#quiz .task').forEach(div=>{delete div.dataset.answer;div.querySelectorAll('.option').forEach(b=>b.classList.remove('selected','correct','wrong'));div.querySelector('.feedback').textContent='';div.querySelector('.feedback').className='feedback';});
+ document.getElementById('score').textContent='Правильных ответов: 0 из 12';document.getElementById('progress').style.width='0%';document.getElementById('final').textContent='';
+});
+</script>
+
+<script>
+(function(){
+  const task=document.getElementById('categoryTask');
+  const prompt=document.getElementById('categoryPrompt');
+  const options=document.getElementById('categoryOptions');
+  const feedback=document.getElementById('categoryFeedback');
+  const stats=document.getElementById('categoryStats');
+  let mode='div', divisor=2, current=null, chosen=null, total=0, right=0, checked=false;
+  const divisors=[2,3,5,9,10];
+  function isPrime(n){
+    if(n<2)return false;
+    for(let i=2;i*i<=n;i++)if(n%i===0)return false;
+    return true;
+  }
+  function newQuestion(){
+    task.style.display='block'; chosen=null; checked=false; feedback.textContent='';feedback.className='feedback';options.innerHTML='';
+    if(mode==='div'){
+      divisor=Number(document.getElementById('divisorCategory').value);
+      current=Math.floor(Math.random()*900)+100;
+      prompt.textContent=`Делится ли число ${current} на ${divisor} без остатка?`;
+      ['Да','Нет'].forEach((t,i)=>makeOption(t,i===0));
+    } else {
+      current=Math.floor(Math.random()*49)+1;
+      prompt.textContent=`Число ${current} — простое, составное или ни то ни другое?`;
+      ['Простое','Составное','Ни то ни другое'].forEach((t,i)=>makeOption(t,['prime','composite','neither'][i]));
+    }
+    stats.textContent=`Правильных ответов: ${right} из ${total}`;
+  }
+  function makeOption(label,value){
+    const b=document.createElement('button');b.type='button';b.className='option';b.textContent=label;
+    b.addEventListener('click',()=>{if(checked)return;chosen=value;options.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');});
+    options.appendChild(b);
+  }
+  function check(){
+    if(chosen===null){feedback.textContent='Сначала выбери ответ.';feedback.className='feedback bad';return;}
+    if(checked)return;
+    checked=true;total++;
+    let correct, explanation;
+    if(mode==='div'){
+      correct=current%divisor===0;
+      explanation=correct?`${current} делится на ${divisor} без остатка.`:`${current} не делится на ${divisor} без остатка.`;
+      if(chosen===correct){right++;feedback.textContent='Верно! '+explanation;feedback.className='feedback good';}
+      else{feedback.textContent='Не совсем. '+explanation;feedback.className='feedback bad';}
+    } else {
+      correct=current===1?'neither':isPrime(current)?'prime':'composite';
+      explanation=current===1?'У числа 1 только один делитель, поэтому оно ни простое, ни составное.':
+        isPrime(current)?`У числа ${current} ровно два делителя: 1 и ${current}. Это простое число.`:
+        `У числа ${current} больше двух делителей. Это составное число.`;
+      if(chosen===correct){right++;feedback.textContent='Верно! '+explanation;feedback.className='feedback good';}
+      else{feedback.textContent='Попробуй запомнить. '+explanation;feedback.className='feedback bad';}
+    }
+    stats.textContent=`Правильных ответов: ${right} из ${total}`;
+  }
+  document.getElementById('startDivisibility').addEventListener('click',()=>{mode='div';newQuestion();});
+  document.getElementById('startPrime').addEventListener('click',()=>{mode='prime';newQuestion();});
+  document.getElementById('categoryCheck').addEventListener('click',check);
+  document.getElementById('categoryNext').addEventListener('click',newQuestion);
+})();
+</script>
+
+</body>
+</html>

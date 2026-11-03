@@ -31,6 +31,9 @@
     .topics{margin:19px 0 23px;color:var(--muted);font-size:13px}
     .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:17px;border-top:1px solid var(--line);color:var(--purple);font-size:15px;font-weight:700}
     .arrow{font-size:23px;line-height:1}
+    .lessons{margin-top:38px}
+    .grade-title{margin:18px 0 16px;color:var(--muted);font-size:18px}
+    .lesson-title{margin:0 0 10px;font-size:23px;line-height:1.3;letter-spacing:-.4px}
     footer{margin-top:34px;padding-top:19px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
     @media(max-width:600px){.wrap{padding:20px 16px 35px}.hero{margin:24px 0 28px;padding:28px 22px}.trainer-grid{grid-template-columns:1fr}.trainer-card{padding:23px}.intro{font-size:16px}.brand{font-size:15px}}
     @media(prefers-reduced-motion:reduce){.trainer-card{transition:none}.trainer-card:hover{transform:none}}
@@ -57,6 +60,21 @@
           <span class="card-action">Открыть тренажёр <span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
+    </section>
+    <section class="lessons" aria-labelledby="lessons-title">
+      <h2 id="lessons-title">Занятия</h2>
+      <section aria-labelledby="grade-five-title">
+        <h3 class="grade-title" id="grade-five-title">5 класс</h3>
+        <div class="trainer-grid">
+          <a class="trainer-card" href="deliteli-kratnye.html" target="_blank" rel="noopener" aria-label="Делители, кратные и признаки делимости (откроется в новой вкладке)">
+            <div class="card-top"><span class="card-icon" aria-hidden="true">÷</span><span class="badge">Урок и практика</span></div>
+            <h4 class="lesson-title">Делители, кратные и признаки делимости</h4>
+            <p class="description">Наглядные объяснения, простые и составные числа, тренажёры и общий тест.</p>
+            <p class="topics">Изучай правила · Тренируйся · Проверяй себя</p>
+            <span class="card-action">Открыть занятие <span class="arrow" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </section>
     </section>
     <footer>Решай в своём темпе — маленькие шаги ведут к большим успехам.</footer>
   </main>
