@@ -13,12 +13,9 @@
     .brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:var(--purple)}
     .brand-icon{display:grid;place-items:center;width:36px;height:36px;background:#eeeafb;border-radius:11px;font-size:23px}
     .hero{position:relative;overflow:hidden;margin:30px 0 34px;padding:38px 32px;border-radius:22px;background:#eef2ff}
-    .eyebrow{margin:0 0 12px;color:var(--purple);font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
     h1{position:relative;margin:0;font-size:clamp(30px,6vw,44px);line-height:1.18;letter-spacing:-1.3px;overflow-wrap:anywhere}
-    .intro{position:relative;max-width:470px;margin:18px 0 0;color:#59657e;font-size:18px}
     .decoration{position:absolute;right:22px;bottom:-28px;font-size:150px;line-height:1;color:#6652b70a;transform:rotate(-12deg);pointer-events:none}
     h2{margin:0;font-size:23px;letter-spacing:-.4px}
-    .section-note{margin:7px 0 20px;color:var(--muted);font-size:15px}
     .trainer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     .trainer-card{display:flex;flex-direction:column;padding:25px;border:1px solid var(--line);border-radius:18px;background:#fff;color:inherit;text-decoration:none;transition:transform .18s,box-shadow .18s,border-color .18s}
     .trainer-card:hover{transform:translateY(-3px);border-color:#c9c0e8;box-shadow:0 9px 26px #292d380c}
@@ -31,11 +28,12 @@
     .topics{margin:19px 0 23px;color:var(--muted);font-size:13px}
     .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:17px;border-top:1px solid var(--line);color:var(--purple);font-size:15px;font-weight:700}
     .arrow{font-size:23px;line-height:1}
-    .lessons{margin-top:38px}
+    section[aria-labelledby="trainers-title"]{margin-top:38px}
+    section[aria-labelledby="trainers-title"]>.trainer-grid{margin-top:20px}
     .grade-title{margin:18px 0 16px;color:var(--muted);font-size:18px}
     .lesson-title{margin:0 0 10px;font-size:23px;line-height:1.3;letter-spacing:-.4px}
     footer{margin-top:34px;padding-top:19px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-    @media(max-width:600px){.wrap{padding:20px 16px 35px}.hero{margin:24px 0 28px;padding:28px 22px}.trainer-grid{grid-template-columns:1fr}.trainer-card{padding:23px}.intro{font-size:16px}.brand{font-size:15px}}
+    @media(max-width:600px){.wrap{padding:20px 16px 35px}.hero{margin:24px 0 28px;padding:28px 22px}.trainer-grid{grid-template-columns:1fr}.trainer-card{padding:23px}.brand{font-size:15px}}
     @media(prefers-reduced-motion:reduce){.trainer-card{transition:none}.trainer-card:hover{transform:none}}
   </style>
 </head>
@@ -44,22 +42,7 @@
     <header class="brand"><span class="brand-icon" aria-hidden="true">✳</span>Матемастерская Аньки</header>
     <section class="hero" aria-labelledby="welcome-title">
       <span class="decoration" aria-hidden="true">＋</span>
-      <p class="eyebrow">Математика шаг за шагом</p>
       <h1 id="welcome-title">Матемастерская Аньки</h1>
-      <p class="intro">Здесь учимся считать, рассуждать и находить решения. Выбирай тренажёр и занимайся в своём темпе.</p>
-    </section>
-    <section aria-labelledby="trainers-title">
-      <h2 id="trainers-title">Тренажёры</h2>
-      <p class="section-note">Каждое большое открытие начинается с маленькой задачи.</p>
-      <div class="trainer-grid">
-        <a class="trainer-card" href="peterson.html">
-          <div class="card-top"><span class="card-icon" aria-hidden="true">×</span><span class="badge">12 тем</span></div>
-          <h3>3 класс · Петерсон</h3>
-          <p class="description">От умножения и деления до выражений с буквами и текстовых задач.</p>
-          <p class="topics">Выбирай тему · Решай задания · Сохраняй прогресс</p>
-          <span class="card-action">Открыть тренажёр <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-      </div>
     </section>
     <section class="lessons" aria-labelledby="lessons-title">
       <h2 id="lessons-title">Занятия</h2>
@@ -75,6 +58,18 @@
           </a>
         </div>
       </section>
+    </section>
+    <section aria-labelledby="trainers-title">
+      <h2 id="trainers-title">Тренажёры</h2>
+      <div class="trainer-grid">
+        <a class="trainer-card" href="peterson.html">
+          <div class="card-top"><span class="card-icon" aria-hidden="true">×</span><span class="badge">12 тем</span></div>
+          <h3>3 класс · Петерсон</h3>
+          <p class="description">От умножения и деления до выражений с буквами и текстовых задач.</p>
+          <p class="topics">Выбирай тему · Решай задания · Сохраняй прогресс</p>
+          <span class="card-action">Открыть тренажёр <span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
     </section>
     <footer>Решай в своём темпе — маленькие шаги ведут к большим успехам.</footer>
   </main>
