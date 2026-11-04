@@ -72,6 +72,7 @@ input:focus{border-color:#8c8eea}
 footer{text-align:center;color:#8991a3;padding:10px}
 @media(max-width:600px){h1{font-size:27px}.card{padding:18px}}
 .site-home{display:inline-block;margin-bottom:24px;color:var(--accent);text-decoration:none;font-size:15px;font-weight:600}.site-home:hover{text-decoration:underline}.lesson-hero{background:#eef2ff;border-radius:22px;padding:28px 24px;margin-bottom:20px}.lesson-hero .badge{margin-bottom:12px}.wrap.tabs{padding:0 20px;gap:8px;flex-wrap:wrap;overflow:visible}nav{position:static;border:0;background:transparent}main.wrap{max-width:860px}.example{background:#f1effb;border:1px solid #9180bd;border-left:4px solid var(--accent)}.grid .example:nth-child(2n){background:#edf7f0;border-color:#568467}.grid .example:nth-child(3n){background:#fff5e6;border-color:#9b7443}.grid .example:nth-child(4n){background:#fff0f4;border-color:#a86c81}.tab{background:#fff;border:1px solid var(--line);white-space:normal;text-align:left}.tab:nth-child(2n){background:#edf7f0;color:#216b48}.tab:nth-child(3n){background:#fff5e6;color:#85591f}.tab.active{background:var(--soft);color:var(--accent);border-color:var(--accent)}.tip{background:#fff5e6;border-color:#9b7443;color:#624e35}.card,.task,.option{min-width:0}.formula{overflow-wrap:anywhere}.score{background:#f1effb}.option:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #8472d4;outline-offset:3px}@media(max-width:600px){header{padding:20px 16px 0}.lesson-hero{padding:24px 18px}main{padding:20px 16px 40px}.wrap.tabs{padding:0 16px}.formula{font-size:21px}}
+.substitution-steps{padding-left:25px;line-height:1.7}.substitution-steps li{margin:12px 0}.application-entry{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.application-entry input{width:100%;min-width:0;flex:1 1 130px}.application-options{border:1px solid var(--line);border-radius:12px;padding:12px;margin:14px 0;min-width:0}.application-options label{display:flex;align-items:center;gap:10px;padding:10px 0;cursor:pointer}.application-options input{width:20px;max-width:20px;height:20px;accent-color:var(--accent);flex:none}.application-task h3{line-height:1.4}.extension-card .formula{font-size:21px;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -92,6 +93,7 @@ footer{text-align:center;color:#8991a3;padding:10px}
 <button class="tab" onclick="show('recognize',this)">🔎 Различаем</button>
 <button class="tab" onclick="show('build',this)">🧩 Составляем</button>
 <button class="tab" onclick="show('value',this)">🔢 Находим значение</button>
+<button class="tab" onclick="show('apply',this)">Применяем</button>
 <button class="tab" onclick="show('mistakes',this)">🕵️ Ошибки</button>
 <button class="tab" onclick="show('final',this)">🏆 Финал</button>
 </div></nav>
@@ -126,6 +128,14 @@ footer{text-align:center;color:#8991a3;padding:10px}
 <div class="example"><b>Число уменьшили в 3 раза</b><div class="formula">x : 3</div></div>
 </div>
 </div>
+<article class="card extension-card">
+<h2>4. Одна задача — два вида выражений</h2>
+<p class="sub">В первый день велосипедист проехал 30 км, а во второй — на 3 км меньше. Чтобы найти путь за два дня, складываем путь первого и второго дня.</p>
+<div class="grid"><div class="example"><h3>Числа известны</h3><p>Во второй день: <b>30 − 3 = 27 км</b>.</p><p>За два дня: <b>30 + (30 − 3) = 57 км</b>.</p></div><div class="example"><h3>Первый день обозначим буквой</h3><p>Если в первый день проехали <b>y км</b>, то во второй — <b>y − 3 км</b>.</p><p>Весь путь: <b>y + (y − 3)</b>.</p></div></div>
+<p class="tip">Скобки сохраняют смысл условия: сначала находим путь второго дня. При y = 30 буквенное выражение превращается в числовое. Для этой задачи y должно быть не меньше 3.</p>
+</article>
+<article class="card extension-card"><h2>5. Как подставлять значение буквы</h2><p class="sub">Вычислим <b>3a + 5</b> при <b>a = 7</b>.</p><ol class="substitution-steps"><li>Подставь значение вместо буквы: <b>3 · 7 + 5</b>.</li><li>Сначала выполни умножение: <b>21 + 5</b>.</li><li>Затем сложение: <b>26</b>.</li></ol><div class="tip">Если одна буква встречается несколько раз, замени её одним и тем же числом везде. В выражении со скобками сначала выполняй действия в скобках, затем умножение и деление, потом сложение и вычитание.</div></article>
+<article class="card extension-card"><h2>6. Формула — выражение для разных случаев</h2><p class="sub">У прямоугольника две стороны длины a и две стороны длины b. Поэтому его периметр:</p><div class="formula">P = a + b + a + b = 2 · (a + b)</div><div class="grid"><div class="example"><h3>a = 3 см, b = 4 см</h3><p><b>P = 2 · (3 + 4) = 14 см</b>.</p></div><div class="example"><h3>a = 5 см, b = 7 см</h3><p><b>P = 2 · (5 + 7) = 24 см</b>.</p></div></div><p class="sub">Размеры меняются, а формула остаётся той же. Перед вычислением проверь, что стороны выражены в одинаковых единицах.</p></article>
 <button class="primary" onclick="showById('recognize')">К заданиям →</button>
 </section>
 
@@ -159,6 +169,11 @@ footer{text-align:center;color:#8991a3;padding:10px}
 </div>
 </section>
 
+<section id="apply" class="section"><div class="card"><h2>Применяем выражения в задачах</h2><p class="sub">Составь выражение по условию, затем выполни вычисления. За каждую решённую задачу — 4 балла.</p>
+<form class="task application-task" data-application="route"><h3>1. Путь за два дня</h3><p>В первый день велосипедист проехал y км, во второй — на 3 км меньше. Найди значение выражения <b>y + (y − 3)</b> при <b>y = 30</b>.</p><label for="application-route">Всего километров</label><div class="application-entry"><input id="application-route" type="text" inputmode="decimal" autocomplete="off" placeholder="Ответ"><button class="primary" type="submit">Проверить</button></div><div class="feedback" aria-live="polite"></div></form>
+<form class="task application-task" data-application="bus"><h3>2. Составь выражение</h3><p>Автобус ехал 10 минут, а затем ещё на n минут меньше. Как записать всё время движения?</p><fieldset class="application-options"><legend>Выбери выражение</legend><label><input type="radio" name="application-bus" value="total">10 + (10 − n)</label><label><input type="radio" name="application-bus" value="increase">10 + (10 + n)</label><label><input type="radio" name="application-bus" value="second">10 − n</label></fieldset><button class="primary" type="submit">Проверить</button><div class="feedback" aria-live="polite"></div></form>
+<form class="task application-task" data-application="perimeter"><h3>3. Периметр прямоугольника</h3><p>Стороны прямоугольника: <b>a = 6 см</b> и <b>b = 3 см</b>. Вычисли периметр по формуле <b>P = 2 · (a + b)</b>.</p><label for="application-perimeter">Периметр в сантиметрах</label><div class="application-entry"><input id="application-perimeter" type="text" inputmode="decimal" autocomplete="off" placeholder="Ответ"><button class="primary" type="submit">Проверить</button></div><div class="feedback" aria-live="polite"></div></form>
+</div></section>
 <section id="mistakes" class="section">
 <div class="card">
 <h2>🕵️ Найди ошибку</h2>
@@ -202,7 +217,7 @@ function show(id,btn){
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  let ids=['theory','recognize','build','value','mistakes','final'];
+  let ids=['theory','recognize','build','value','apply','mistakes','final'];
   document.getElementById('bar').style.width=((ids.indexOf(id))/(ids.length-1)*100)+'%';
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -329,5 +344,5 @@ function checkFinal(){
 }
 renderMistake();renderFinal();
 </script>
-</body>
+<script src="vyrazheniya-primenenie.js"></script></body>
 </html>
