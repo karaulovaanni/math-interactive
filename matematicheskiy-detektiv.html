@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link rel="icon" href="favicon.ico?v=1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математический детектив · 3 класс — Матемастерская Аньки</title>
+<style>
+:root{--ink:#292d38;--muted:#697184;--paper:#fff;--bg:#fafafd;--blue:#6652b7;--blue2:#f1effb;--green:#228454;--greenbg:#edf7f0;--red:#b94a57;--redbg:#fff0f4;--gold:#9b7443;--line:#e5e8f0;--purple:#6652b7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 16px;font-weight:700;transition:.15s}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9bb0ff;outline-offset:2px}.app{max-width:820px;margin:auto;padding:22px 16px 50px}.hero{background:#eef2ff;color:var(--ink);border-radius:24px;padding:26px 28px;position:relative;overflow:hidden}.hero:after{content:"＋  ×  =";position:absolute;right:24px;bottom:2px;font-size:42px;font-weight:900;opacity:.14;letter-spacing:8px}.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:800;opacity:.8}.hero h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:8px 0}.hero p{max-width:700px;margin:8px 0 0;color:var(--muted)}.progressline{height:7px;background:#dfe6f6;border-radius:99px;overflow:hidden;margin:18px 0 8px}.progressline span{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}.topline{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab{background:white;border:1px solid var(--line);color:var(--ink)}.tab.active{background:var(--blue);color:white;border-color:var(--blue)}.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,28px);box-shadow:0 8px 24px #253c6810;margin-top:14px}.panel h2{margin:0 0 8px;font-size:24px}.lead{color:var(--muted);margin-top:0}.stepgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.step{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fbfcff}.step b{display:block;font-size:13px;color:var(--blue);margin-bottom:4px}.step span{font-size:14px}.example{background:#f6f8ff;border:1px solid #dfe5ff;border-radius:16px;padding:18px;margin:16px 0}.story{font-size:19px;font-weight:650;line-height:1.5}.equation{font-size:clamp(25px,4vw,34px);font-weight:850;letter-spacing:.4px;text-align:center;padding:15px;color:#314dc2}.unit{color:var(--muted);font-size:14px}.hint{background:#fff8e6;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;margin:12px 0}.good{background:var(--greenbg);color:#116442;padding:12px 14px;border-radius:12px;margin-top:12px}.bad{background:var(--redbg);color:#a42e38;padding:12px 14px;border-radius:12px;margin-top:12px}.primary{background:var(--blue);color:white}.secondary{background:var(--blue2);color:#314dc2}.ghost{background:#f1f4f9;color:var(--ink)}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:0 0 auto}.questionnum{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--purple);text-transform:uppercase}.answers{display:grid;gap:10px;margin:18px 0}.answer{width:100%;text-align:left;background:white;border:1.5px solid var(--line);padding:14px 16px;font-weight:600;display:flex;gap:12px;align-items:flex-start}.answer .letter{width:27px;height:27px;flex:0 0 27px;border-radius:8px;background:#eef2fb;display:grid;place-items:center;color:#52617a}.answer.chosen{border-color:var(--blue);background:#f4f6ff}.answer.correct{border-color:var(--green);background:var(--greenbg)}.answer.wrong{border-color:var(--red);background:var(--redbg)}.answer:disabled{cursor:default}.choicegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choicegrid button{background:#fff;border:1px solid var(--line);text-align:left}.choicegrid button.selected{border-color:var(--blue);background:var(--blue2)}.choicegrid button.correct{border-color:var(--green);background:var(--greenbg)}.choicegrid button.wrong{border-color:var(--red);background:var(--redbg)}.tablewrap{overflow-x:auto;margin:16px 0}table{border-collapse:collapse;width:100%;min-width:460px}th,td{border:1px solid var(--line);padding:11px;text-align:center}th{background:#f3f6fc}td input{width:100%;max-width:130px;padding:8px;border:1px solid #cbd5e1;border-radius:8px;text-align:center}.rulecards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.rule{padding:14px;border-radius:14px;background:#f6f8fc;border:1px solid var(--line)}.rule .symbol{font-size:25px;font-weight:900;color:var(--blue)}.rule b{display:block}.rule small{color:var(--muted)}.feedback{min-height:30px}.scorebox{display:flex;gap:12px;flex-wrap:wrap}.score{background:#f6f8ff;border:1px solid var(--line);padding:12px 16px;border-radius:14px}.score strong{font-size:22px;display:block}.footer{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}.hidden{display:none!important}.tag{display:inline-block;background:#eee9ff;color:#6043a9;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:800}.formula{font-size:22px;font-weight:800}.blank{display:inline-block;min-width:70px;border-bottom:2px solid #7d8da7;text-align:center;color:var(--blue)}@media(max-width:650px){.stepgrid{grid-template-columns:repeat(2,1fr)}.rulecards{grid-template-columns:1fr}.choicegrid{grid-template-columns:1fr}.hero{padding:22px}.hero:after{display:none}.panel{padding:17px}.story{font-size:17px}}
+.site-home{display:inline-block;color:var(--blue);text-decoration:none;font-size:15px;font-weight:600;margin-bottom:24px}.site-home:hover{text-decoration:underline}.site-home:focus-visible{outline:3px solid #8472d4;outline-offset:4px}.hero{border-radius:22px;padding:32px}.eyebrow{color:var(--blue);text-transform:none;letter-spacing:0;font-size:14px;opacity:1}.hero h1{letter-spacing:-1px}.hero:after{display:none}.hero p{font-size:16px}.panel{box-shadow:none;border-radius:18px;padding:24px}.example{background:#f1effb;border:1px solid #9180bd}.equation,.secondary{color:#5844a5}.equation{overflow-wrap:anywhere}.hint{background:#fff5e6;color:#624e35}.progressline span{background:#8472d4}.step:nth-child(2),.rule:nth-child(2),.rule:nth-child(5){background:#edf7f0;border-color:#568467}.step:nth-child(3),.rule:nth-child(3),.rule:nth-child(6){background:#fff5e6;border-color:#9b7443}.step:nth-child(4),.rule:nth-child(4){background:#fff0f4;border-color:#a86c81}.step:first-child,.rule:first-child{background:#f1effb;border-color:#9180bd}.rule .symbol{font-size:21px;overflow-wrap:anywhere}.step,.rule,.panel,.example{min-width:0}.rule small{color:var(--ink)}.tab:nth-child(2n):not(.active){background:#edf7f0;color:#216b48}.tab:nth-child(3n):not(.active){background:#fff5e6;color:#85591f}button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#8472d4}.topline{flex-wrap:wrap}.tabs button{max-width:100%}.score{background:#f1effb}.good{border:1px solid #568467}.bad{border:1px solid #a86c81}@media(max-width:650px){.hero{padding:24px 20px}.panel{padding:18px}.app{padding-top:20px}.stepgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.rulecards{grid-template-columns:1fr}.row>*{max-width:100%}.story{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<div class="app">
+<a class="site-home" href="./">← Матемастерская Аньки</a>
+<header class="hero">
+ <div class="eyebrow">Урок · 3 класс</div>
+ <h1>Математический детектив</h1>
+ <p>Учимся читать условие задачи, находить нужные действия и составлять выражения — даже если вместо чисел стоят буквы.</p>
+</header>
+<div class="progressline"><span id="progress"></span></div>
+<div class="topline"><span id="progressText">Твой путь: 0 из 26 заданий</span><span id="pointsText">0 баллов</span></div>
+<nav class="tabs" aria-label="Разделы урока">
+ <button class="tab active" data-tab="learn">1. Разберёмся</button>
+ <button class="tab" data-tab="practice">2. Выбираем выражение</button>
+ <button class="tab" data-tab="tables">3. Таблицы</button>
+ <button class="tab" data-tab="letters">4. Буквы — это числа</button>
+ <button class="tab" data-tab="challenge">5. Математический детектив</button>
+</nav>
+<main>
+<section id="learn" class="panel">
+ <span class="tag">ТЕОРИЯ С ПРИМЕРАМИ</span>
+ <h2>Главный секрет: не угадывай по словам!</h2>
+ <p class="lead">Сначала выясни, что известно и что нужно найти. Потом решай, какое действие поможет.</p>
+ <div class="stepgrid">
+  <div class="step"><b>ШАГ 1</b><span>Прочитай задачу. Что известно?</span></div>
+  <div class="step"><b>ШАГ 2</b><span>Определи, что нужно найти.</span></div>
+  <div class="step"><b>ШАГ 3</b><span>Выбери действие и составь выражение.</span></div>
+  <div class="step"><b>ШАГ 4</b><span>Проверь смысл и единицы измерения.</span></div>
+ </div>
+ <h2>Что обычно означают слова в задаче?</h2>
+ <div class="rulecards">
+  <div class="rule"><div class="symbol">+</div><b>Сколько всего?</b><small>Объединяем части: складываем.</small></div>
+  <div class="rule"><div class="symbol">−</div><b>На сколько больше / меньше?</b><small>Сравниваем две величины: вычитаем.</small></div>
+  <div class="rule"><div class="symbol">×</div><b>В несколько раз больше</b><small>Если одна величина в 6 раз больше другой: умножаем меньшую на 6.</small></div>
+  <div class="rule"><div class="symbol">÷</div><b>В несколько раз меньше</b><small>Чтобы найти меньшую величину, делим большую на число раз.</small></div>
+  <div class="rule"><div class="symbol">цена × количество</div><b>Стоимость покупки</b><small>Цена одного предмета умножить на число предметов.</small></div>
+  <div class="rule"><div class="symbol">вся работа ÷ время</div><b>Работа за один час</b><small>Если работа выполняется равномерно, делим на число часов.</small></div>
+ </div>
+ <div class="hint"><b>Важно!</b> Слова — это подсказки, а не готовый ответ. Например, «на сколько больше» — это разность, а «в 6 раз больше» — умножение. Это разные вопросы!</div>
+ <h2>Как буквы помогают решать задачу?</h2>
+ <p>Буква — это число, которое мы пока не знаем или которое может меняться. С буквой можно выполнять те же действия, что и с обычным числом.</p>
+ <div class="example">
+  <div class="story">Мама заготовила <i>a</i> трёхлитровых и <i>x</i> двухлитровых банок варенья. Сколько всего литров варенья?</div>
+  <p>В каждой большой банке — 3 литра. В <i>a</i> таких банках:</p>
+  <div class="equation">3 · a</div>
+  <p>В каждой маленькой банке — 2 литра. В <i>x</i> таких банках:</p>
+  <div class="equation">2 · x</div>
+  <p>Нужно узнать, сколько литров <b>всего</b>, значит, складываем обе части:</p>
+  <div class="equation">3 · a + 2 · x (л)</div>
+  <div class="good">Можно записать и так: <b>a · 3 + x · 2</b>. Результат одинаковый: от перестановки множителей произведение не меняется.</div>
+ </div>
+ <h2>Сравниваем: «на сколько» и «во сколько»</h2>
+ <div class="example">
+  <div class="story">В первой книге <i>x</i> страниц, это в 6 раз больше, чем во второй. На сколько страниц в первой книге больше?</div>
+  <p>Во второй книге страниц в 6 раз меньше: <b>x : 6</b>. Чтобы узнать, на сколько страниц больше в первой, вычитаем:</p>
+  <div class="equation">x − x : 6</div>
+  <div class="hint">Не путай: «в 6 раз больше» помогает найти количество умножением, а вопрос «на сколько больше?» требует вычитания.</div>
+ </div>
+ <div class="row"><button class="primary" onclick="goTab('practice')">Потренироваться →</button><button class="secondary" onclick="goTab('tables')">Открыть таблицы</button></div>
+</section>
+
+<section id="practice" class="panel hidden">
+ <span class="tag">ПРАКТИКА 1</span>
+ <h2>Выбери правильное выражение</h2>
+ <p class="lead">Читай задачу целиком. Выбирай не просто знакомые числа, а выражение, которое отвечает на вопрос.</p>
+ <div class="scorebox"><div class="score"><strong id="practiceCount">0 / 4</strong><span>заданий решено</span></div><div class="score"><strong id="practiceScore">0</strong><span>баллов</span></div></div>
+ <div id="practiceQuestion"></div>
+ <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+ <div class="row"><button class="secondary" id="hintBtn">Подсказка</button><button class="primary" id="nextPractice" disabled>Следующее задание →</button></div>
+</section>
+
+<section id="tables" class="panel hidden">
+ <span class="tag">ПРАКТИКА 2</span>
+ <h2>Заполни таблицу и найди правило</h2>
+ <p class="lead">Таблица помогает увидеть, как связаны величины. Впиши ответы в пустые клетки и нажми «Проверить».</p>
+ <div class="example">
+  <b>Задача 1. Стоимость конвертов</b>
+  <p>За 5 одинаковых конвертов заплатили <i>c</i> рублей. Сначала найди стоимость одного конверта, затем — восьми.</p>
+  <div class="tablewrap"><table><thead><tr><th>Количество конвертов</th><th>5</th><th>1</th><th>8</th></tr></thead><tbody><tr><th>Стоимость</th><td><i>c</i> руб.</td><td><input id="envOne" aria-label="Выражение для стоимости одного конверта" placeholder="Выражение"></td><td><input id="envEight" aria-label="Выражение для стоимости восьми конвертов" placeholder="Выражение"></td></tr></tbody></table></div>
+  <button class="primary" onclick="checkEnvelope()">Проверить таблицу</button><div id="envFeedback" class="feedback" aria-live="polite"></div>
+ </div>
+ <div class="example">
+  <b>Задача 2. Книги</b>
+  <p>В первой книге <i>x</i> страниц, что в 6 раз больше, чем во второй. Заполни таблицу.</p>
+  <div class="tablewrap"><table><thead><tr><th>Книга</th><th>Первая</th><th>Вторая</th><th>Разница</th></tr></thead><tbody><tr><th>Число страниц</th><td><i>x</i></td><td><input id="bookTwo" aria-label="Выражение для страниц во второй книге" placeholder="Выражение"></td><td><input id="bookDiff" aria-label="Выражение для разницы страниц" placeholder="Выражение"></td></tr></tbody></table></div>
+  <button class="primary" onclick="checkBooks()">Проверить таблицу</button><div id="bookFeedback" class="feedback" aria-live="polite"></div>
+ </div>
+ <div class="hint">Можно вводить выражения с буквами: например, <b>c : 5</b>, <b>c/5</b> или <b>x - x : 6</b>. Здесь важен смысл выражения.</div>
+</section>
+
+
+<section id="letters" class="panel hidden">
+ <span class="tag">МИССИЯ «РАСКРОЙ СЕКРЕТ БУКВЫ»</span>
+ <h2>Буква — это просто число в маске 🕵️</h2>
+ <p class="lead">Буквы в математике не кусаются! Они просто прячут число. Иногда мы знаем, какое это число, а иногда оно может быть разным.</p>
+ <div class="example">
+  <div class="story">Представь закрытую коробку. Внутри лежит какое-то число.</div>
+  <div class="equation">📦 = a</div>
+  <p>Если в коробке 4 карандаша, то <b>a = 4</b>. Если 9 карандашей — <b>a = 9</b>. Буква не изменилась, но число внутри может быть другим.</p>
+  <div class="hint"><b>Запомни:</b> буква — это место для числа. Мы можем узнать это число из условия или подставить вместо буквы то число, которое нам дали.</div>
+ </div>
+ <h2>Миссия 1. Что прячется за буквой?</h2>
+ <p>Прочитай карточку и выбери, чему равна буква. Каждая правильная разгадка приносит 1 балл.</p>
+ <div id="letterMission1"></div>
+ <div id="letterFeedback1" class="feedback" aria-live="polite"></div>
+ <div class="row"><button class="primary" id="letterCheck1">Проверить</button><button class="secondary" id="letterNext1" disabled>Следующая карточка →</button></div>
+ <div class="divider" style="margin:24px 0"></div>
+ <h2>Миссия 2. Подставь число вместо буквы</h2>
+ <p>Теперь буква уже раскрыта. Просто замени её числом и посчитай — точно так же, как в обычном примере.</p>
+ <div id="letterMission2"></div>
+ <div id="letterFeedback2" class="feedback" aria-live="polite"></div>
+ <div class="row"><button class="primary" id="letterCheck2">Проверить</button><button class="secondary" id="letterNext2" disabled>Следующий пример →</button></div>
+ <div class="divider" style="margin:24px 0"></div>
+ <h2>Миссия 3. Одно выражение — разные числа</h2>
+ <p>Выражение <b>a + 3</b> не меняется. Меняется только число, которое мы подставляем вместо <i>a</i>.</p>
+ <div class="example">
+  <div class="tablewrap"><table><thead><tr><th>Буква</th><th>Выражение</th><th>Подставили число</th><th>Получили</th></tr></thead><tbody>
+  <tr><td><i>a</i> = 2</td><td>a + 3</td><td>2 + 3</td><td>5</td></tr>
+  <tr><td><i>a</i> = 5</td><td>a + 3</td><td>5 + 3</td><td>8</td></tr>
+  <tr><td><i>a</i> = 10</td><td>a + 3</td><td>10 + 3</td><td>13</td></tr>
+  </tbody></table></div>
+  <p class="good">Сама запись <b>a + 3</b> осталась прежней. Мы лишь меняли число вместо буквы.</p>
+ </div>
+ <h2>Миссия 4. Собери выражение из истории</h2>
+ <p>Выбери подходящую запись. Представь, что <i>n</i> — число, которое пока неизвестно.</p>
+ <div id="letterMission3"></div>
+ <div id="letterFeedback3" class="feedback" aria-live="polite"></div>
+ <div class="row"><button class="primary" id="letterCheck3">Проверить</button><button class="secondary" id="letterNext3" disabled>Новая история →</button></div>
+</section>
+<section id="challenge" class="panel hidden">
+ <span class="tag">ПРАКТИКА 3</span>
+ <h2>Математический детектив</h2>
+ <p class="lead">В каждом деле нужно найти лишнее рассуждение, исправить ошибку или собрать решение из шагов.</p>
+ <div id="challengeArea"></div>
+ <div id="challengeFeedback" class="feedback" aria-live="polite"></div>
+ <div class="row"><button class="primary" id="checkChallenge">Проверить ответ</button><button class="secondary" id="nextChallenge" disabled>Следующее дело →</button></div>
+</section>
+
+<section id="finish" class="panel hidden">
+ <h2>Дело раскрыто! 🎉</h2>
+ <p>Ты потренировался читать условия, выбирать действия и записывать выражения с буквами.</p>
+ <div class="scorebox"><div class="score"><strong id="finalPoints">0</strong><span>баллов</span></div><div class="score"><strong id="finalDone">0</strong><span>заданий пройдено</span></div></div>
+ <p id="finishMessage"></p>
+ <div class="row"><button class="primary" onclick="resetAll()">Пройти ещё раз</button><button class="secondary" onclick="goTab('learn')">Повторить теорию</button></div>
+</section>
+</main>
+
+</div>
+<script>
+const state={points:0,done:new Set(),practiceIndex:0,practiceAnswered:false,challengeIndex:0,challengeAnswered:false};
+const practices=[
+ {story:'Мама заготовила на зиму <i>a</i> трёхлитровых и <i>x</i> двухлитровых банок варенья. Сколько всего литров варенья?',options:['3 · a + 2 · x (л)','a + x (банок)','3 · a − 2 · x (л)','a · 3 + x · 2 (л)'],correct:[0,3],explain:'В трёхлитровых банках 3 · a литров, в двухлитровых — 2 · x литров. Чтобы найти общий объём, складываем: 3 · a + 2 · x. Запись a · 3 + x · 2 тоже верная.',hint:'Найди объём каждой группы банок отдельно. Потом ответь на вопрос «сколько всего литров?».',multi:true},
+ {story:'В первой книге <i>x</i> страниц, что в 6 раз больше, чем во второй. На сколько страниц в первой книге больше?',options:['x : 6 (страниц)','x − x : 6 (страниц)','x − 6 (страниц)','x + x : 6 (страниц)'],correct:[1],explain:'Во второй книге x : 6 страниц. Чтобы найти, на сколько страниц больше в первой, нужно из x вычесть x : 6.',hint:'Сначала найди число страниц во второй книге. Затем сравни количество страниц двух книг.',multi:false},
+ {story:'За 5 одинаковых конвертов заплатили <i>c</i> рублей. Сколько рублей будут стоить 8 таких конвертов?',options:['c : 5 · 8 (рублей)','8 : (c : 5) (конвертов)','5 : c · 8 (рублей)','c · 5 : 8 (рублей)'],correct:[0],explain:'Сначала стоимость одного конверта: c : 5. Потом стоимость восьми конвертов: c : 5 · 8. Делить 5 на c не нужно: c — общая стоимость пяти конвертов.',hint:'Сколько стоит один конверт? Общую стоимость раздели на 5. Как найти стоимость 8 конвертов?',multi:false},
+ {story:'В коробке <i>m</i> красных карандашей, а синих на 4 больше. Сколько всего карандашей в коробке?',options:['m + 4','m + (m + 4)','m · 4','m − (m + 4)'],correct:[1],explain:'Красных m. Синих на 4 больше, то есть m + 4. Всего: m + (m + 4).',hint:'Сначала запиши, сколько синих карандашей. Затем сложи красные и синие.',multi:false}
+];
+function norm(s){return (s||'').toLowerCase().replace(/[·×*]/g,'*').replace(/[−–]/g,'-').replace(/\s+/g,'')}
+function addPoints(n){state.points+=n;updateTop()}
+function markDone(key){state.done.add(key);updateTop()}
+function updateTop(){document.getElementById('pointsText').textContent=state.points+' баллов';document.getElementById('progressText').textContent='Твой путь: '+state.done.size+' из 26 заданий';document.getElementById('progress').style.width=Math.min(100,state.done.size/26*100)+'%'}
+function goTab(tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('hidden',s.id!==tab));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>goTab(b.dataset.tab)));
+function renderPractice(){document.getElementById('nextPractice').textContent=state.practiceIndex===practices.length-1?'К таблицам →':'Следующее задание →';const q=practices[state.practiceIndex];state.practiceAnswered=false;document.getElementById('practiceFeedback').innerHTML='';document.getElementById('nextPractice').disabled=true;document.getElementById('hintBtn').disabled=false;document.getElementById('practiceQuestion').innerHTML=`<div class="example"><div class="questionnum">ЗАДАНИЕ ${state.practiceIndex+1} ИЗ ${practices.length}</div><div class="story">${q.story}</div><p>Выбери выражение, которое отвечает на вопрос.</p><div class="answers">${q.options.map((o,i)=>`<button class="answer" data-answer="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}</div><p class="unit">${q.multi?'Внимание: правильных ответов может быть несколько.':'Выбери один вариант.'}</p></div>`;document.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>choosePractice(+b.dataset.answer)));document.getElementById('practiceCount').textContent=state.practiceIndex+' / '+practices.length;document.getElementById('practiceScore').textContent=state.points}
+let selectedPractice=new Set();
+function choosePractice(i){if(state.practiceAnswered)return;const q=practices[state.practiceIndex];if(!q.multi){selectedPractice=new Set([i]);document.querySelectorAll('[data-answer]').forEach(b=>b.classList.toggle('chosen',+b.dataset.answer===i))}else{if(selectedPractice.has(i))selectedPractice.delete(i);else selectedPractice.add(i);document.querySelectorAll('[data-answer]').forEach(b=>b.classList.toggle('chosen',selectedPractice.has(+b.dataset.answer)));if(selectedPractice.size)document.getElementById('practiceFeedback').innerHTML='<span class="unit">Выбрано вариантов: '+selectedPractice.size+'. Когда закончишь, нажми «Проверить ответ».</span>'}let check=document.getElementById('practiceCheck');if(!check){check=document.createElement('button');check.id='practiceCheck';check.className='primary';check.textContent='Проверить ответ';document.getElementById('practiceQuestion').appendChild(check);check.addEventListener('click',checkPractice)}}
+function checkPractice(){if(state.practiceAnswered)return;const q=practices[state.practiceIndex];const buttons=[...document.querySelectorAll('[data-answer]')];if(!q.multi&&selectedPractice.size===0){const chosen=document.querySelector('.answer.chosen');if(chosen)selectedPractice.add(+chosen.dataset.answer)}if(selectedPractice.size===0){document.getElementById('practiceFeedback').innerHTML='<div class="hint">Сначала выбери ответ.</div>';return}state.practiceAnswered=true;let correct=selectedPractice.size===q.correct.length&&q.correct.every(x=>selectedPractice.has(x));buttons.forEach(b=>{const i=+b.dataset.answer;b.disabled=true;if(q.correct.includes(i))b.classList.add('correct');else if(selectedPractice.has(i))b.classList.add('wrong')});if(correct){addPoints(2);markDone('p'+state.practiceIndex);document.getElementById('practiceFeedback').innerHTML='<div class="good"><b>Верно! +2 балла.</b> '+q.explain+'</div>'}else{document.getElementById('practiceFeedback').innerHTML='<div class="bad"><b>Пока не совсем.</b> '+q.explain+'</div>';markDone('p'+state.practiceIndex)}document.getElementById('nextPractice').disabled=false;document.getElementById('hintBtn').disabled=true;document.getElementById('practiceScore').textContent=state.points;document.getElementById('practiceCount').textContent=(state.practiceIndex+1)+' / '+practices.length;const check=document.getElementById('practiceCheck');if(check)check.disabled=true;if(state.practiceIndex===practices.length-1)document.getElementById('nextPractice').textContent='К таблицам →'}
+document.getElementById('hintBtn').addEventListener('click',()=>{const q=practices[state.practiceIndex];document.getElementById('practiceFeedback').innerHTML='<div class="hint"><b>Подсказка:</b> '+q.hint+'</div>'});
+document.getElementById('nextPractice').addEventListener('click',()=>{if(state.practiceIndex<practices.length-1){state.practiceIndex++;selectedPractice=new Set();renderPractice()}else{goTab('tables')}});
+document.getElementById('practiceQuestion').addEventListener('click',e=>{if(e.target.id==='practiceCheck')checkPractice()});
+// single choice answer is selected first, then user checks with the button
+function checkEnvelope(){const a=norm(document.getElementById('envOne').value),b=norm(document.getElementById('envEight').value);const okA=['c:5','c/5'].includes(a),okB=['c:5*8','c/5*8','8*c:5','8*c/5','(c:5)*8','(c/5)*8','8*(c:5)','8*(c/5)'].includes(b);document.getElementById('envFeedback').innerHTML=okA&&okB?'<div class="good">Отлично! Один конверт стоит c : 5 рублей, а восемь — c : 5 · 8 рублей. +2 балла.</div>':'<div class="bad">Проверь оба шага: сначала общую стоимость c раздели на 5, затем стоимость одного конверта умножь на 8.</div>';if(okA&&okB){if(!state.done.has('table1'))addPoints(2);markDone('table1')}}
+function checkBooks(){const a=norm(document.getElementById('bookTwo').value),b=norm(document.getElementById('bookDiff').value);const okA=['x:6','x/6'].includes(a),okB=['x-x:6','x-x/6','x-(x:6)','x-(x/6)'].includes(b);document.getElementById('bookFeedback').innerHTML=okA&&okB?'<div class="good">Верно! Во второй книге x : 6 страниц, разница — x − x : 6. +2 балла.</div>':'<div class="bad">Во второй книге страниц в 6 раз меньше: x : 6. «На сколько больше?» означает найти разность: x − x : 6.</div>';if(okA&&okB){if(!state.done.has('table2'))addPoints(2);markDone('table2')}}
+const challenges=[
+ {story:'У Лены было <i>p</i> наклеек. У Миши в 3 раза меньше. Как найти, сколько наклеек у них вместе?',opts:['p + 3','p + p : 3','p − p : 3','p · 3 + p'],correct:1,why:'У Миши p : 3 наклеек. Вместе: p + p : 3.'},
+ {story:'В 4 пакетах поровну лежит <i>n</i> яблок. Как записать число яблок в одном пакете?',opts:['n · 4','4 : n','n : 4','n − 4'],correct:2,why:'Общее количество делим поровну на 4 пакета: n : 4.'},
+ {story:'В одной тетради <i>k</i> страниц. В другой — на 7 страниц меньше. Сколько страниц во второй тетради?',opts:['k − 7','k : 7','k + 7','7 − k'],correct:0,why:'«На 7 меньше» — вычитаем 7: k − 7.'},
+ {story:'Проверь рассуждение: «За 5 конвертов заплатили c рублей. Стоимость одного конверта — 5 : c». В чём ошибка?',opts:['Нужно c : 5, общую стоимость делим на количество','Нужно c · 5, ведь конвертов пять','Решить нельзя, потому что c — буква','Никакой ошибки нет'],correct:0,why:'Чтобы найти стоимость одного предмета, общую стоимость c делим на количество предметов 5: c : 5.'}
+];
+function renderChallenge(){document.getElementById('nextChallenge').textContent=state.challengeIndex===challenges.length-1?'Завершить →':'Следующее дело →';const q=challenges[state.challengeIndex];state.challengeAnswered=false;document.getElementById('challengeFeedback').innerHTML='';document.getElementById('checkChallenge').disabled=false;document.getElementById('nextChallenge').disabled=true;document.getElementById('challengeArea').innerHTML=`<div class="example"><div class="questionnum">ДЕЛО ${state.challengeIndex+1} ИЗ ${challenges.length}</div><div class="story">${q.story}</div><div class="answers">${q.opts.map((o,i)=>`<button class="answer" data-ch="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}</div></div>`;document.querySelectorAll('[data-ch]').forEach(b=>b.addEventListener('click',()=>{if(state.challengeAnswered)return;document.querySelectorAll('[data-ch]').forEach(x=>x.classList.remove('chosen'));b.classList.add('chosen')}));}
+document.getElementById('checkChallenge').addEventListener('click',()=>{if(state.challengeAnswered)return;const chosen=document.querySelector('[data-ch].chosen');if(!chosen){document.getElementById('challengeFeedback').innerHTML='<div class="hint">Выбери один ответ.</div>';return}const q=challenges[state.challengeIndex],i=+chosen.dataset.ch;state.challengeAnswered=true;document.querySelectorAll('[data-ch]').forEach(b=>{b.disabled=true;if(+b.dataset.ch===q.correct)b.classList.add('correct');else if(+b.dataset.ch===i)b.classList.add('wrong')});if(i===q.correct){addPoints(2);document.getElementById('challengeFeedback').innerHTML='<div class="good"><b>Дело раскрыто! +2 балла.</b> '+q.why+'</div>'}else document.getElementById('challengeFeedback').innerHTML='<div class="bad">'+q.why+'</div>';markDone('c'+state.challengeIndex);document.getElementById('checkChallenge').disabled=true;document.getElementById('nextChallenge').disabled=false;document.getElementById('nextChallenge').textContent=state.challengeIndex===challenges.length-1?'Завершить →':'Следующее дело →'});
+document.getElementById('nextChallenge').addEventListener('click',()=>{if(state.challengeIndex<challenges.length-1){state.challengeIndex++;renderChallenge()}else{document.getElementById('finalPoints').textContent=state.points;document.getElementById('finalDone').textContent=state.done.size;document.getElementById('finishMessage').textContent=state.points>=14?'Отличная работа! Ты умеешь внимательно читать условия и составлять выражения.':state.points>=8?'Хороший результат! Повтори теорию и попробуй ещё раз, чтобы закрепить навык.':'Не торопись — вернись к теории и попробуй снова. Ошибки помогают учиться!';goTab('finish')}});
+
+const letterReveal=[
+ {story:'На тарелке лежит a яблок. Мама положила ещё 2 яблока. Что означает a?',opts:['Число яблок, которое уже лежало на тарелке','Всегда число 2','Знак сложения'],correct:0,why:'Буква a обозначает начальное количество яблок. Оно может быть разным.'},
+ {story:'В задаче сказано: x = 7. Какое число прячется за x?',opts:['17','7','Любое число, даже если условие уже сказало 7'],correct:1,why:'Если сказано x = 7, значит, вместо x нужно подставлять число 7.'},
+ {story:'Петя прочитал b страниц. Что можно сказать о b, если в условии не указано число?',opts:['b обязательно равно 1','b — это буква, которую нельзя использовать в вычислениях','b обозначает количество прочитанных страниц, но само число пока неизвестно'],correct:2,why:'Мы знаем, что именно обозначает b, но пока не знаем его значение.'},
+ {story:'У Маши было m наклеек. Оказалось, что m = 12. Сколько наклеек было у Маши?',opts:['m наклеек — это 12 наклеек','12 + m наклеек','Нельзя узнать, потому что есть буква'],correct:0,why:'Буква m равна 12, значит, у Маши было 12 наклеек.'},
+ {story:'В пакете a конфет. Как записать количество конфет в двух таких пакетах?',opts:['a + 2','a · 2','a − 2'],correct:1,why:'В каждом пакете a конфет. Два одинаковых пакета: a · 2, то есть a + a.'}
+];
+const letterCalculate=[
+ {story:'Если a = 4, найди a + 3.',opts:['7','43','12'],correct:0,why:'Вместо a подставляем 4: 4 + 3 = 7.'},
+ {story:'Если x = 6, найди x · 2.',opts:['8','12','62'],correct:1,why:'Вместо x подставляем 6: 6 · 2 = 12. Буква не приклеивается к числу — она заменяется числом.'},
+ {story:'Если c = 15, найди c : 5.',opts:['10','3','155'],correct:1,why:'Подставляем 15: 15 : 5 = 3.'},
+ {story:'Если n = 9, найди n − 4.',opts:['5','94','36'],correct:0,why:'Подставляем 9: 9 − 4 = 5.'},
+ {story:'Если b = 3, найди b + b.',opts:['6','33','9'],correct:0,why:'Вместо обеих букв b ставим 3: 3 + 3 = 6.'},
+ {story:'Если x = 5, найди x · 3 + 1.',opts:['16','13','531'],correct:0,why:'Сначала умножение: 5 · 3 + 1 = 15 + 1 = 16.'}
+];
+const letterStories=[
+ {story:'У Саши было n марок, а ему подарили ещё 5. Как записать, сколько марок стало?',opts:['n + 5','n · 5','n − 5'],correct:0,why:'Было n, добавили ещё 5 — значит, n + 5.'},
+ {story:'В одной коробке a фломастеров. Сколько фломастеров в 4 таких коробках?',opts:['a + 4','a · 4','4 − a'],correct:1,why:'Четыре одинаковые коробки по a фломастеров: a · 4.'},
+ {story:'У Оли x рублей, а у Вани на 3 рубля меньше. Сколько рублей у Вани?',opts:['x + 3','x · 3','x − 3'],correct:2,why:'На 3 меньше — от x отнимаем 3: x − 3.'},
+ {story:'В первой корзине m груш, во второй — k груш. Сколько груш в двух корзинах вместе?',opts:['m + k','m − k','m · k'],correct:0,why:'Складываем количество груш в обеих корзинах: m + k.'},
+ {story:'За 3 одинаковые ручки заплатили c рублей. Как найти стоимость одной ручки?',opts:['c · 3','c : 3','3 : c'],correct:1,why:'Общую стоимость c делим на количество ручек 3: c : 3.'}
+];
+const letterState={idx1:0,idx2:0,idx3:0,chosen1:null,chosen2:null,chosen3:null,done1:new Set(),done2:new Set(),done3:new Set()};
+function renderLetter(which){
+ const arr=which===1?letterReveal:which===2?letterCalculate:letterStories;
+ const idx=letterState['idx'+which],q=arr[idx%arr.length];
+ letterState['chosen'+which]=null;
+ document.getElementById('letterFeedback'+which).innerHTML='';
+ document.getElementById('letterCheck'+which).disabled=false;
+ document.getElementById('letterNext'+which).disabled=true;
+ const target=document.getElementById('letterMission'+which);
+ target.innerHTML=`<div class="example"><div class="questionnum">КАРТОЧКА ${idx%arr.length+1} ИЗ ${arr.length}</div><div class="story">${q.story}</div><div class="answers">${q.opts.map((o,i)=>`<button class="answer" data-letter="${which}-${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}</div></div>`;
+ if(letterState['done'+which].has(idx)){document.getElementById('letterCheck'+which).disabled=true;document.getElementById('letterNext'+which).disabled=false;target.querySelectorAll('.answer').forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add('correct')});document.getElementById('letterFeedback'+which).innerHTML='<div class="good">Карточка уже пройдена. '+q.why+'</div>';}
+ target.querySelectorAll('[data-letter]').forEach(b=>b.addEventListener('click',()=>{if(letterState['done'+which].has(idx))return;letterState['chosen'+which]=+b.dataset.letter.split('-')[1];target.querySelectorAll('.answer').forEach(x=>x.classList.remove('chosen'));b.classList.add('chosen')}));
+}
+function checkLetter(which){
+ const idx=letterState['idx'+which],arr=which===1?letterReveal:which===2?letterCalculate:letterStories,q=arr[idx%arr.length],choice=letterState['chosen'+which];
+ if(choice===null){document.getElementById('letterFeedback'+which).innerHTML='<div class="hint">Выбери ответ — можно спокойно подумать.</div>';return}
+ if(letterState['done'+which].has(idx))return;
+ letterState['done'+which].add(idx);markDone('letter'+which+'-'+idx);
+ const target=document.getElementById('letterMission'+which);
+ target.querySelectorAll('.answer').forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add('correct');else if(i===choice)b.classList.add('wrong')});
+ if(choice===q.correct){addPoints(1);markDone('letter'+which+'-'+idx);document.getElementById('letterFeedback'+which).innerHTML='<div class="good"><b>Раскрыто! +1 балл.</b> '+q.why+'</div>'}
+ else document.getElementById('letterFeedback'+which).innerHTML='<div class="bad">'+q.why+' Ошибаться не страшно: буквы становятся понятнее с практикой.</div>';
+ document.getElementById('letterCheck'+which).disabled=true;document.getElementById('letterNext'+which).disabled=false;
+}
+[1,2,3].forEach(which=>{
+ document.getElementById('letterCheck'+which).addEventListener('click',()=>checkLetter(which));
+ document.getElementById('letterNext'+which).addEventListener('click',()=>{
+  letterState['idx'+which]++;
+  const arr=which===1?letterReveal:which===2?letterCalculate:letterStories;
+  if(letterState['idx'+which]>=arr.length)letterState['idx'+which]=0;
+  renderLetter(which);
+ });
+});
+
+function resetAll(){state.points=0;state.done.clear();state.practiceIndex=0;state.challengeIndex=0;selectedPractice=new Set();letterState.idx1=0;letterState.idx2=0;letterState.idx3=0;letterState.done1.clear();letterState.done2.clear();letterState.done3.clear();updateTop();renderPractice();renderChallenge();renderLetter(1);renderLetter(2);renderLetter(3);goTab('learn');document.getElementById('envOne').value='';document.getElementById('envEight').value='';document.getElementById('bookTwo').value='';document.getElementById('bookDiff').value='';document.getElementById('envFeedback').innerHTML='';document.getElementById('bookFeedback').innerHTML=''}
+renderPractice();renderChallenge();renderLetter(1);renderLetter(2);renderLetter(3);updateTop();
+</script>
+</body>
+</html>
