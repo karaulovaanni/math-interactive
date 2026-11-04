@@ -25,11 +25,11 @@
     .trainer-card:hover{transform:translateY(-3px);border-color:#c9c0e8;box-shadow:0 9px 26px #292d380c}
     .trainer-card:focus-visible{outline:3px solid #8472d4;outline-offset:5px}
     .card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}
-    .card-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:#eeeafb;color:var(--purple);font-size:30px;font-weight:700}
+    .card-icon{display:grid;place-items:center;width:58px;height:58px;flex:0 0 58px;white-space:nowrap;line-height:1;border-radius:16px;background:#eeeafb;color:var(--purple);font-size:30px;font-weight:700}
+    .card-icon--formula{font-size:18px}
     .badge{padding:5px 10px;background:#edf7f0;border-radius:20px;color:#27845d;font-size:12px}
     h3{margin:0 0 10px;font-size:23px;line-height:1.3;letter-spacing:-.4px}
-    .description{margin:0;color:var(--muted);font-size:15px}
-    .topics{margin:19px 0 23px;color:var(--muted);font-size:13px}
+    .description{margin:0 0 22px;color:var(--muted);font-size:15px}
     .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:17px;border-top:1px solid var(--line);color:var(--purple);font-size:15px;font-weight:700}
     .arrow{font-size:23px;line-height:1}
     section[aria-labelledby="trainers-title"]{margin-top:38px}
@@ -56,22 +56,19 @@
           <a class="trainer-card" href="deliteli-kratnye.html?v=3">
             <div class="card-top"><span class="card-icon" aria-hidden="true">÷</span><span class="badge">Урок и практика</span></div>
             <h4 class="lesson-title">Делители, кратные и признаки делимости</h4>
-            <p class="description">Наглядные объяснения, простые и составные числа, тренажёры и общий тест.</p>
-            <p class="topics">Изучай правила · Тренируйся · Проверяй себя</p>
+            <p class="description">Делители и кратные; делимость на 2, 3, 5, 9, 10; простые и составные числа.</p>
             <span class="card-action">Открыть занятие <span class="arrow" aria-hidden="true">→</span></span>
           </a>
           <a class="trainer-card" href="raskrytie-skobok.html">
-            <div class="card-top"><span class="card-icon" aria-hidden="true">( )</span><span class="badge">6 разделов · 80 заданий</span></div>
+            <div class="card-top"><span class="card-icon card-icon--formula" aria-hidden="true">( )</span><span class="badge">6 разделов · 80 заданий</span></div>
             <h4 class="lesson-title">Раскрытие скобок</h4>
-            <p class="description">Распределительное свойство, подобные слагаемые и уравнения: от простых примеров к сложным.</p>
-            <p class="topics">Изучай памятки · Решай по шагам · Записывай в тетради</p>
+            <p class="description">Раскрытие скобок, подобные слагаемые, уравнения с умножением и делением.</p>
             <span class="card-action">Открыть занятие <span class="arrow" aria-hidden="true">→</span></span>
           </a>
           <a class="trainer-card" href="bukvennye-vyrazheniya.html">
-            <div class="card-top"><span class="card-icon" aria-hidden="true">a + b</span><span class="badge">5 класс · 6 разделов</span></div>
+            <div class="card-top"><span class="card-icon card-icon--formula" aria-hidden="true">a + b</span><span class="badge">5 класс · 6 разделов</span></div>
             <h4 class="lesson-title">Буквенные выражения</h4>
-            <p class="description">Числа прячутся за буквами: удобные вычисления, коэффициенты, подобные слагаемые и задачи.</p>
-            <p class="topics">Читай объяснения · Рассуждай · Решай в тетради</p>
+            <p class="description">Удобные вычисления, коэффициенты, подобные слагаемые, составление уравнений по условию задачи.</p>
             <span class="card-action">Открыть занятие <span class="arrow" aria-hidden="true">→</span></span>
           </a>
         </div>
@@ -83,8 +80,7 @@
           <a class="trainer-card" href="kvadratny-koren.html">
             <div class="card-top"><span class="card-icon" aria-hidden="true">√</span><span class="badge">Урок и практика</span></div>
             <h4 class="lesson-title">Квадратный корень</h4>
-            <p class="description">Квадрат корня, корень из квадрата и приближённые значения на координатной прямой.</p>
-            <p class="topics">Разбирай примеры · Применяй правила · Тренируйся</p>
+            <p class="description">Квадрат корня и корень из квадрата, допустимые значения, порядок действий и приближённые вычисления.</p>
             <span class="card-action">Открыть занятие <span class="arrow" aria-hidden="true">→</span></span>
           </a>
         </div>
@@ -96,15 +92,13 @@
         <a class="trainer-card" href="peterson.html">
           <div class="card-top"><span class="card-icon" aria-hidden="true">×</span><span class="badge">12 тем</span></div>
           <h3>3 класс · Петерсон</h3>
-          <p class="description">От умножения и деления до выражений с буквами и текстовых задач.</p>
-          <p class="topics">Выбирай тему · Решай задания · Сохраняй прогресс</p>
+          <p class="description">Умножение и деление на 10, 100, 1000; удобные вычисления; буквенные выражения; текстовые задачи; умножение в столбик.</p>
           <span class="card-action">Открыть тренажёр <span class="arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="trainer-card" href="matematicheskiy-perevodchik.html">
           <div class="card-top"><span class="card-icon" aria-hidden="true">↔</span><span class="badge">5 класс · 3 режима</span></div>
           <h3>Математический переводчик</h3>
-          <p class="description">Переводи фразы на язык математики, выбирай выражения и вычисляй их значения.</p>
-          <p class="topics">Простые выражения · Скобки · Микс-тренировка</p>
+          <p class="description">Перевод фраз в выражения, порядок действий, скобки и вычисление значений.</p>
           <span class="card-action">Открыть тренажёр <span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
