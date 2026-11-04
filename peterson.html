@@ -35,18 +35,42 @@ const root=document.getElementById('content');
 const storeKey='vanya-peterson-math-progress-v3';
 let saved={};try{saved=JSON.parse(localStorage.getItem(storeKey)||'{}')}catch(e){saved={}}
 let activeSection=null, chosen=null;
+const topicLink=document.querySelector('.site-nav a');
+function topicFromUrl(){
+ const match=location.hash.match(/^#topic-(\d+)$/);
+ if(!match)return null;
+ const index=Number(match[1])-1;
+ return index>=0&&index<sections.length?index:null;
+}
+function topicsUrl(){return location.pathname+location.search;}
+function openSection(index){
+ history.pushState({petersonTopic:index},'',topicsUrl()+'#topic-'+(index+1));
+ renderLocation();
+}
+function backToTopics(){
+ if(topicFromUrl()!==null&&Number.isInteger(history.state?.petersonTopic))history.back();
+ else{history.replaceState({petersonTopic:null},'',topicsUrl());home();}
+}
+function renderLocation(){
+ const index=topicFromUrl();
+ if(index===null)home();
+ else{activeSection=index;renderTask();}
+}
+window.addEventListener('popstate',renderLocation);
+
 const progress=saved.progress||{};
 function persist(){localStorage.setItem(storeKey,JSON.stringify({progress}))}
 function state(i){return progress[i]||(progress[i]={current:0,points:0,correct:[]})}
 function safe(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
 function home(){
  activeSection=null;
+ topicLink.href='./';topicLink.textContent='← Матемастерская Аньки';topicLink.onclick=null;
  document.getElementById('stepLabel').textContent='Выбери тему';
  const done=sections.reduce((n,s,i)=>n+state(i).correct.length,0), all=sections.reduce((n,s)=>n+s.tasks.length,0);
  document.getElementById('stats').textContent='Темы: '+sections.filter((s,i)=>state(i).current>=s.tasks.length).length+' из '+sections.length+' завершено · Верно: '+done;
  document.getElementById('bar').style.width=(all?Math.round(done/all*100):0)+'%';
  root.innerHTML='<div class="category-grid">'+sections.map((s,i)=>'<button class="category" data-section="'+i+'" style="--tint:'+s.tint+';--accent:'+s.accent+'"><span class="category-icon">'+safe(s.icon)+'</span><span><strong>'+safe(s.title)+'</strong><small>'+state(i).current+' / '+s.tasks.length+' заданий · '+state(i).points+' верно</small></span><span class="category-arrow">›</span></button>').join('')+'</div>';
- root.querySelectorAll('.category').forEach(b=>b.onclick=()=>{activeSection=Number(b.dataset.section);renderTask()});
+ root.querySelectorAll('.category').forEach(b=>b.onclick=()=>openSection(Number(b.dataset.section)));
 }
 function answerOptions(sec,task){
  const correct=String(task[1]);
@@ -66,13 +90,14 @@ function answerOptions(sec,task){
 function renderTask(){
  const sec=sections[activeSection], st=state(activeSection);
  if(st.current>=sec.tasks.length){home();document.getElementById('stepLabel').textContent='Тема пройдена!';root.insertAdjacentHTML('afterbegin','<article class="task done">🎉 Все задания темы выполнены! <button class="tile-action" id="backCats">К темам</button></article>');document.getElementById('backCats').onclick=home;return}
+ topicLink.href=topicsUrl();topicLink.textContent='← Все темы · 3 класс';topicLink.onclick=e=>{e.preventDefault();backToTopics();};
  const task=sec.tasks[st.current], options=answerOptions(sec,task);
  document.getElementById('stepLabel').textContent=sec.title+' · '+(st.current+1)+' из '+sec.tasks.length;
  document.getElementById('stats').textContent='В этой теме верно: '+st.points+' · Прогресс сохраняется автоматически';
  document.getElementById('bar').style.width=Math.round(st.current/sec.tasks.length*100)+'%';
  chosen=null;
  root.innerHTML='<div class="topic-head"><button class="back" id="back">← Все темы</button><span>'+safe(sec.title)+'</span></div><article class="task" style="--accent:'+sec.accent+'"><div class="task-meta">Задание '+(st.current+1)+' из '+sec.tasks.length+'</div><div class="prompt">'+safe(task[0])+'</div><div class="choice-label">Выбери ответ или перетащи карточку в поле:</div><div class="choices">'+options.map((x,i)=>'<button class="choice" draggable="true" data-value="'+safe(x)+'"><span class="choice-mark">'+String.fromCharCode(1040+i)+'</span>'+safe(x)+'</button>').join('')+'</div><div class="dropzone" id="answerZone">Перетащи выбранный ответ сюда</div><div class="task-actions"><button class="answer-check" id="check">Проверить</button><button class="next" id="next">Следующее задание →</button></div><div class="result" id="result" aria-live="polite"></div></article>';
- document.getElementById('back').onclick=home;
+ document.getElementById('back').onclick=backToTopics;
  const zone=document.getElementById('answerZone');
  root.querySelectorAll('.choice').forEach(btn=>{
   btn.onclick=()=>select(btn.dataset.value,btn);
@@ -96,9 +121,15 @@ function renderTask(){
  };
  document.getElementById('next').onclick=()=>{st.current++;persist();renderTask()};
 }
-document.getElementById('reset').onclick=()=>{if(confirm('Сбросить прогресс во всех темах?')){for(const k of Object.keys(progress))delete progress[k];persist();home()}};
+document.getElementById('reset').onclick=()=>{if(confirm('Сбросить прогресс во всех темах?')){for(const k of Object.keys(progress))delete progress[k];persist();backToTopics()}};
 const extra=document.createElement('style');
 extra.textContent='.category-grid{display:grid;gap:12px}.category{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink);cursor:pointer;font:inherit}.category:hover,.choice:hover{transform:translateY(-1px);box-shadow:0 4px 14px #2221}.category-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:11px;background:var(--tint);color:var(--accent);font-weight:700;font-size:22px}.category small{display:block;color:var(--muted);font-size:13px;margin-top:3px}.category-arrow{margin-left:auto;color:var(--muted);font-size:25px}.topic-head{display:flex;align-items:center;gap:12px;color:var(--muted);margin:0 0 12px}.back{border:0;background:#f1effb;color:#5844a5;padding:9px 12px;border-radius:9px;cursor:pointer;font:600 14px Arial}.choice-label{margin-top:18px;color:var(--muted);font-size:15px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.choice{display:flex;align-items:center;gap:10px;min-height:54px;padding:10px 13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:600 17px Arial;cursor:grab;transition:.15s}.choice.selected{border:2px solid #8472d4;background:#f6f3ff}.choice-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#f1effb;color:#6652b7;font-size:13px}.dropzone{min-height:54px;margin-top:16px;border:2px dashed #d9d5ee;border-radius:12px;background:#fcfbff;padding:14px;color:#858394}.dropzone.filled{background:#f6f3ff;color:var(--ink);border-style:solid}.answer-check{border:0;border-radius:10px;padding:11px 17px;background:#6652b7;color:white;font:600 15px Arial;cursor:pointer}.answer-check:disabled{opacity:.55}.next{display:none;border:0;border-radius:10px;padding:11px 16px;background:#edf7f0;color:#22724a;font:600 15px Arial;cursor:pointer}.next.show{display:inline-block}.done{display:flex;justify-content:space-between;align-items:center}.task-actions{margin-top:14px}.result{min-height:24px;margin-top:12px;font-weight:700}.result.ok{color:var(--ok)}.result.bad{color:var(--bad)}@media(max-width:560px){.choices{grid-template-columns:1fr}.category{padding:13px}.task{padding:17px}}';
 document.head.appendChild(extra);
-home();
+// A direct topic link also gets a topics-list entry, so Back stays inside the trainer.
+const initialTopic=topicFromUrl();
+if(initialTopic!==null&&history.state?.petersonTopic!==initialTopic){
+ history.replaceState({petersonTopic:null},'',topicsUrl());
+ history.pushState({petersonTopic:initialTopic},'',topicsUrl()+'#topic-'+(initialTopic+1));
+}else if(initialTopic===null){history.replaceState({petersonTopic:null},'',topicsUrl());}
+renderLocation();
 </script></body></html>
